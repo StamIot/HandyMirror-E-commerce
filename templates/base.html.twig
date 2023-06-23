@@ -9,14 +9,10 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
     </head>
     <body>
         <header>
-            <img src="{{ asset('images/logo.png') }}" alt="Notre logo">
+            <img src="{{ asset('/images/logo.png') }}" alt="Notre logo">
             <nav>
                 <ul>
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
