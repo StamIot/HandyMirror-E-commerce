@@ -12,7 +12,7 @@ class LegalNotitesController extends AbstractController
     public function index(): Response
     {
         return $this->render('legal_notites/index.html.twig', [
-            'controller_name' => 'LegalNotitesController',
+            'titlePage' => 'Mentions Légales',
         ]);
     }
 }

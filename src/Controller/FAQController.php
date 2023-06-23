@@ -12,7 +12,7 @@ class FAQController extends AbstractController
     public function index(): Response
     {
         return $this->render('faq/index.html.twig', [ // renvoie vers la page FAQ
-            'controller_name' => 'FAQController',
+            'titlePage' => 'FAQ - Foire Aux Questions',
         ]);
     }
 }
