@@ -8,10 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FAQController extends AbstractController
 {
-    #[Route('/faq', name: 'app_f_a_q')]
+    #[Route('/faq', name: 'app_faq')] // route pour la FAQ
     public function index(): Response
     {
-        return $this->render('faq/index.html.twig', [
+        return $this->render('faq/index.html.twig', [ // renvoie vers la page FAQ
             'controller_name' => 'FAQController',
         ]);
     }
