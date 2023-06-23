@@ -1,5 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Bienvenue sur notre boutique{% endblock %}
 
-{% block main %}{% endblock main %}
+{% block main %}
+    <section>
+        <h1>{{ titlePage | upper }}</h1>
+    </section>
+    <section>
+        <div>
+            {% include '/home/describe_product.html.twig' %}
+        </div>
+        <div>
+            <img src="{{ asset("/images/outils.jpg")}}" alt="Différents outils visant à promouvoir l'handicap" />
+        </div>
+    <section>
+{% endblock main %}
