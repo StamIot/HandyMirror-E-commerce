@@ -2,4 +2,13 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 
-{% block main %}{% endblock main %}
+{% block main %}
+    <section>
+        <div>
+            {% include '/home/describe_product.html.twig' %}
+        </div>
+        <div>
+            <img src="{{ asset("/images/outils.jpg")}}" alt="Différents outils visant à promouvoir l'handicap" />
+        </div>
+    <section>
+{% endblock main %}
