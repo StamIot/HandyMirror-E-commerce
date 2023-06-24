@@ -16,7 +16,9 @@
         {% include "layout/header.html.twig" %}
         
         <!-- Contenu principal des pages -->
-        {% block main %}{% endblock %}
+        <main>
+            {% block main %}{% endblock %}
+        </main>
 
         <!-- Pied de page disponible sur toutes les pages du site -->
         {% include "layout/footer.html.twig" %}

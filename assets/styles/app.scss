@@ -67,3 +67,14 @@ header {
         }
     }
 }
+
+.titlePage {
+    background-color: $primary-color;
+    padding: 50px 0;
+    h1 {
+        color: $creame-color;
+        font-size: 48px;
+        text-align: center;
+        text-shadow: 2px 2px $black-color;
+    }
+}
