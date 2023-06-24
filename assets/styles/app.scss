@@ -2,6 +2,7 @@ $primary-color: #5f7161;
 $secondary-color: #6d8b74;
 $creame-color: #efead8;
 $gray-color: #d0c9c0;
+$white-color: #FFFFFF;
 $black-color: #333333;
 
 *,
@@ -76,5 +77,26 @@ header {
         font-size: 48px;
         text-align: center;
         text-shadow: 2px 2px $black-color;
+    }
+}
+
+.describe__content {
+    padding: 3%;
+    background-color: $white-color;
+    display: flex;
+    gap: 25px;
+
+    div {
+        &:first-child {
+            width: 60%;
+            letter-spacing: 1.6px;
+            white-space: pre-line;
+            padding: 0 50px;
+        }
+        &:last-child {
+            width: 40%;
+            height: fit-content;
+            background-color: red;
+        }
     }
 }
