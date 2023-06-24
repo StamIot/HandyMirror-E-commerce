@@ -2,7 +2,7 @@ $primary-color: #5f7161;
 $secondary-color: #6d8b74;
 $creame-color: #efead8;
 $gray-color: #d0c9c0;
-$white-color: #FFFFFF;
+$white-color: #ffffff;
 $black-color: #333333;
 
 *,
@@ -15,6 +15,9 @@ $black-color: #333333;
 a {
     text-decoration: none;
     color: $black-color;
+}
+ul {
+    list-style-type: none;
 }
 
 body {
@@ -49,7 +52,6 @@ header {
         ul {
             display: flex;
             align-items: center;
-            list-style-type: none;
             li {
                 a {
                     cursor: pointer;
@@ -69,9 +71,11 @@ header {
     }
 }
 
+/* main div.titlePage */
 .titlePage {
     background-color: $primary-color;
     padding: 50px 0;
+    /* main div.titlePage h1 */
     h1 {
         color: $creame-color;
         font-size: 48px;
@@ -80,6 +84,7 @@ header {
     }
 }
 
+/* main section.describe__content */
 .describe__content {
     padding: 3%;
     background-color: $white-color;
@@ -98,5 +103,49 @@ header {
             height: fit-content;
             background-color: red;
         }
+    }
+}
+
+footer {
+    height: 162px;
+    background-color: $secondary-color;
+    border-top: 2px solid $black-color;
+    display: flex;
+    flex-direction: column;
+    /* footer ul */
+    ul {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex: 1;
+        li {
+            a {
+                display: block;
+                padding: 12px;
+                transition: background-color 0.4s ease-in-out;
+                /* a:hover */
+                &:hover {
+                    background-color: $primary-color;
+                    color: $creame-color;
+                }
+                /* a::before */
+                &::before {
+                    content: '>';
+                    color: $creame-color;
+                    padding-right: 12px;
+                    font-weight: 700;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    /* footer p */
+    p {
+        background-color: $black-color;
+        color: $creame-color;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 16px 0;
     }
 }
