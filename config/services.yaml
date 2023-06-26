@@ -6,6 +6,12 @@
 parameters:
 
 services:
+    App\Controller\RegistrationController:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@security.user_password_hasher.generic'
+            - '@security.token_generator'
+            - '@mailer'        
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
