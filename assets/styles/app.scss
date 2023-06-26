@@ -1,12 +1,13 @@
 
-// base
-@import 'base/reset';
-@import 'base/typography';
-
 // utils
 @import 'utils/variables';
 @import 'utils/mixins';
 @import 'utils/functions';
+
+// base
+@import 'base/reset';
+@import 'base/typography';
+
 
 //layout
 @import 'layout/header';
