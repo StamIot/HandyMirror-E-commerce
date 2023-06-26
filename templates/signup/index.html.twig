@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block main %}
+    <div class="titlePage">
+        <h1>{{ titlePage | upper }}</h1>
+    </div>
+
+    <section class="m-5">
+        {{ form(formSignup) }}
+    </section>
+{% endblock %}
