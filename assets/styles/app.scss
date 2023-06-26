@@ -1,153 +1,34 @@
-@import '~bootstrap/scss/bootstrap';
+// utils
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/functions';
 
-$primary-color: #5f7161;
-$secondary-color: #6d8b74;
-$creame-color: #efead8;
-$gray-color: #d0c9c0;
-$white-color: #ffffff;
-$black-color: #333333;
+// base
+@import 'base/reset';
+@import 'base/typography';
 
-*,
-::before,
-::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-a {
-    text-decoration: none;
-    color: $black-color;
-}
-ul {
-    list-style-type: none;
-}
 
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: $creame-color;
-    color: $black-color;
-}
+//layout
+@import 'layout/header';
+@import 'layout/grid';
+@import 'layout/layout';
+@import 'layout/footer';
 
-main {
-    flex: 1;
-}
+//components
+@import 'components/buttons';
+@import 'components/form';
+@import 'components/navbar';
 
-header {
-    height: 54px;
-    background-color: $secondary-color;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid $black-color;
-
-    img {
-        margin-left: 25px;
-        height: 90%;
-        border-radius: 12%;
-    }
-
-    nav {
-        margin-right: 25px;
-
-        ul {
-            display: flex;
-            align-items: center;
-            li {
-                a {
-                    cursor: pointer;
-                    padding: 0 16px;
-                    height: 52px; // 54px -2px pour la barre sous le header
-                    display: flex;
-                    align-items: center;
-                    font-weight: 700;
-                    transition: background-color 0.4s, color 0.4s;
-                }
-                &:hover a {
-                    background-color: $primary-color;
-                    color: $creame-color;
-                }
-            }
-        }
-    }
-}
-
-/* main div.titlePage */
-.titlePage {
-    background-color: $primary-color;
-    padding: 50px 0;
-    /* main div.titlePage h1 */
-    h1 {
-        color: $creame-color;
-        font-size: 48px;
-        text-align: center;
-        text-shadow: 2px 2px $black-color;
-    }
-}
-
-/* main section.describe__content */
-.describe__content {
-    padding: 3%;
-    background-color: $white-color;
-    display: flex;
-    gap: 25px;
-
-    div {
-        &:first-child {
-            width: 60%;
-            letter-spacing: 1.6px;
-            white-space: pre-line;
-            padding: 0 50px;
-        }
-        &:last-child {
-            width: 40%;
-            height: fit-content;
-            background-color: red;
-        }
-    }
-}
-
-footer {
-    height: 162px;
-    background-color: $secondary-color;
-    border-top: 2px solid $black-color;
-    display: flex;
-    flex-direction: column;
-    /* footer ul */
-    ul {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        flex: 1;
-        li {
-            a {
-                display: block;
-                padding: 12px;
-                transition: background-color 0.4s ease-in-out;
-                /* a:hover */
-                &:hover {
-                    background-color: $primary-color;
-                    color: $creame-color;
-                }
-                /* a::before */
-                &::before {
-                    content: '>';
-                    color: $creame-color;
-                    padding-right: 12px;
-                    font-weight: 700;
-                    font-size: 16px;
-                }
-            }
-        }
-    }
-    /* footer p */
-    p {
-        background-color: $black-color;
-        color: $creame-color;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 16px 0;
-    }
-}
+//pages
+@import 'pages/home';
+@import 'pages/login';
+@import 'pages/register';
+@import 'pages/productList';
+@import 'pages/productDetail';
+@import 'pages/payment';
+@import 'pages/confirmation';
+@import 'pages/cart';
+@import 'pages/faq';
+@import 'pages/legalNotice';
+@import 'pages/contact';
+@import 'pages/about';

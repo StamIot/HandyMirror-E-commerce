@@ -1,0 +1,34 @@
+/* main div.titlePage */
+.titlePage {
+    background-color: $primary-color;
+    padding: 50px 0;
+    /* main div.titlePage h1 */
+    h1 {
+        color: $creame-color;
+        font-size: 48px;
+        text-align: center;
+        text-shadow: 2px 2px $black-color;
+    }
+}
+
+/* main section.describe__content */
+.describe__content {
+    padding: 3%;
+    background-color: $white-color;
+    display: flex;
+    gap: 25px;
+
+    div {
+        &:first-child {
+            width: 60%;
+            letter-spacing: 1.6px;
+            white-space: pre-line;
+            padding: 0 50px;
+        }
+        &:last-child {
+            width: 40%;
+            height: fit-content;
+            background-color: red;
+        }
+    }
+}
