@@ -1,0 +1,11 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: $creame-color;
+    color: $black-color;
+}
+
+main {
+    flex: 1;
+}
