@@ -8,7 +8,6 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -27,21 +26,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private ?string $nom = null;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private ?string $prenom = null;
-
-     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $confirmationToken;
 
     public function getId(): ?int
     {
@@ -102,42 +86,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->password = $password;
 
         return $this;
-    }
-
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getPrenom(): ?string
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function getConfirmationToken(): ?string
-    {
-    return $this->confirmationToken;
-    }
-
-    public function setConfirmationToken(?string $confirmationToken): self
-    {
-    $this->confirmationToken = $confirmationToken;
-
-    return $this;
     }
 
     /**
