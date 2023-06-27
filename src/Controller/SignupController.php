@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\SignupType;
+use App\Service\HandyLogs;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use ReflectionClass;
@@ -17,6 +18,8 @@ class SignupController extends AbstractController
     private $entityManager;
     private $passwordHasher;
 
+    
+
     public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher)
     {
         $this->entityManager = $entityManager;
@@ -24,7 +27,7 @@ class SignupController extends AbstractController
     }
 
     #[Route('/signup', name: 'app_signup', methods: ['GET', 'POST'])]
-    public function index(Request $request, LoggerInterface $logger): Response
+    public function index(Request $request, LoggerInterface $logger, HandyLogs $handyLogs): Response
     {
         $user = new User();
         $form = $this->createForm(SignupType::class, $user);
@@ -32,10 +35,14 @@ class SignupController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $handyLogs->writeInfo("Un utilisateur est sur le point de s'inscrire sur le site");
+
             // Traite la confirmation du mot de passe
             if ($form->get('password')->getData() !== $form->get('password_confirm')->getData()) { // Si les mots de passe ne correspondent pas
-                $this->addFlash('error', 'Les mots de passe ne correspondent pas'); // Ajoute un message flash
                 $logger->error('Les mots de passe ne correspondent pas'); // Log l'erreur
+                $handyLogs->writeError("Les mots de passe ne correspondent pas");
+                //$this->addFlash('error', 'Les mots de passe ne correspondent pas'); // Ajoute un message flash
                 return $this->redirectToRoute('app_signup'); // Redirige vers la page d'inscription
             }
 
@@ -46,6 +53,7 @@ class SignupController extends AbstractController
             $this->entityManager->flush();
 
             $logger->notice('Un utilisateur vient de s\'inscrire');
+            $handyLogs->writeSuccess("Un utilisateur vient de s'inscrire sur le site");
 
             return $this->redirectToRoute('app_home');
         }
