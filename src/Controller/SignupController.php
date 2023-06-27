@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use App\Entity\User;
@@ -11,29 +10,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class SignupController extends AbstractController
 {
     private $entityManager;
+    private $passwordHasher;
 
-    public function __construct(EntityManagerInterface $entityManager) // J'injecte l'entity manager dans le constructeur
+    public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher)
     {
-        $this->entityManager = $entityManager; // Je créee une variable qui va contenir l'entity manager
+        $this->entityManager = $entityManager;
+        $this->passwordHasher = $passwordHasher;
     }
 
-    #[Route('/signup', name: 'app_signup', methods: ['GET', 'POST'])] // dans la route, je précise que la méthode est GET et POST
+    #[Route('/signup', name: 'app_signup', methods: ['GET', 'POST'])]
     public function index(Request $request, LoggerInterface $logger): Response
     {
         $user = new User();
         $form = $this->createForm(SignupType::class, $user);
 
-        // $infoController = new ReflectionClass($user);
-        // dd($infoController->getMethods());
-
-        // $logger->alert('Un utilisateur est en train de s\'inscrire'); // J'envoie un message dans le fichier de log (var/log/dev.log
-        // $logger->notice("------------------------ Je fais un test de log ------------------------- "); // J'envoie un message dans le fichier de log (var/log/dev.log
-
-        $form->handleRequest($request); // J'écoute la requête
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Traite la confirmation du mot de passe
@@ -42,39 +38,29 @@ class SignupController extends AbstractController
                 $logger->error('Les mots de passe ne correspondent pas');
                 return $this->redirectToRoute('app_signup');
             }
-        
-            // Je hash le mot de passe pour la sécurité dans la base de données
-            $user->setPassword(
-                password_hash(
-                    $form->get('password')->getData(),
-                    PASSWORD_BCRYPT
-                )
-            );
 
-            $user = $form->getData(); // Je récupère les données du formulaire
+            $hashedPassword = $this->passwordHasher->hashPassword($user, $form->get('password')->getData()); // Hash le mot de passe avec hasher
+            $user->setPassword($hashedPassword);
 
-            $this->entityManager->persist($user); // Je persiste les données pour les envoyer en BDD
-            $this->entityManager->flush(); // Je flush les données 
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
 
-            $logger->notice('Un utilisateur vient de s\'inscrire'); // J'envoie un message dans le fichier de log (var/log/dev.log
+            $logger->notice('Un utilisateur vient de s\'inscrire');
 
-            return $this->redirectToRoute('app_home'); // Je redirige vers la route d'accueil
+            return $this->redirectToRoute('app_home');
         }
 
-        return $this->render('signup/index.html.twig', [ // Je retourne la vue signup/index.html.twig
+        return $this->render('signup/index.html.twig', [
             'titlePage' => "S'inscrire",
-            'formSignup' => $form->createView() 
+            'formSignup' => $form->createView()
         ]);
     }
 
-    #[Route('/signup/success', name: 'app_home')] // en cas de succès, je redirige vers la route d'accueil
-    
+    #[Route('/signup/success', name: 'app_home')]
     public function success(): Response
     {
         return $this->render('home/index.html.twig', [
             'titlePage' => 'handy mirror',
         ]);
     }
-
-  }
-
+}
