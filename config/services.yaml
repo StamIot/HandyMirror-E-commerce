@@ -5,13 +5,19 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
 
+imports:
+    - { resource: 'doctrine.yaml' } 
 services:
     App\Controller\RegistrationController:
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@security.user_password_hasher.generic'
             - '@security.token_generator'
-            - '@mailer'        
+            - '@mailer'   
+    App\Controller\LogInController:
+        arguments:
+            $entityManager: '@doctrine.orm.default_entity_manager'
+  
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
