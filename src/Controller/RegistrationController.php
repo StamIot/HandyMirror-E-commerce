@@ -20,7 +20,7 @@ class RegistrationController extends AbstractController
 {
     private $entityManager;
     private $passwordHasher;
-    private $tokenGenerator;
+    // private $tokenGenerator;
     private $mailer;
     private $validator;
 
@@ -28,7 +28,7 @@ class RegistrationController extends AbstractController
     {
         $this->entityManager = $entityManager;
         $this->passwordHasher = $passwordHasher;
-        $this->tokenGenerator = $tokenGenerator;
+    //    $this->tokenGenerator = $tokenGenerator;
         $this->mailer = $mailer;
         $this->validator = $validator;
     }
@@ -48,10 +48,10 @@ class RegistrationController extends AbstractController
                     'message' => 'Le mot de passe doit contenir au moins une majuscule, un chiffre et un caractère spécial.',
                 ]),
             ],
-            'prenom' => [
+            'firstname' => [
                 new Assert\NotBlank(),
             ],
-            'nom' => [
+            'lastname' => [
                 new Assert\NotBlank(),
             ],
         ]);
@@ -67,19 +67,19 @@ class RegistrationController extends AbstractController
             return $this->json(['errors' => $errors], Response::HTTP_BAD_REQUEST);
         }
         
-        $token = $this->tokenGenerator->generateToken();
+        // $token = $this->tokenGenerator->generateToken();
 
         // Créer un nouvel utilisateur avec les données validées
         $user = new User();
         $user->setEmail($data['email']);
         $encodedPassword = $this->passwordHasher->hashPassword($user, $data['password']);
         $user->setPassword($encodedPassword);
-        $user->setPrenom($data['prenom']);
-        $user->setNom($data['nom']);
+        $user->setFirstName($data['firstname']);
+        $user->setLastName($data['lastname']);
 
         // Enregistrer l'utilisateur dans la base de données, etc.
         $this->entityManager->persist($user);
-        $user->setConfirmationToken($token);
+        // $user->setConfirmationToken($token);
         $this->entityManager->flush();
         
         // $this->sendConfirmationEmail($user);
