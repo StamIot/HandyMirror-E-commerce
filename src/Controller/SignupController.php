@@ -33,10 +33,10 @@ class SignupController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Traite la confirmation du mot de passe
-            if ($form->get('password')->getData() !== $form->get('password_confirm')->getData()) {
-                $this->addFlash('error', 'Les mots de passe ne correspondent pas');
-                $logger->error('Les mots de passe ne correspondent pas');
-                return $this->redirectToRoute('app_signup');
+            if ($form->get('password')->getData() !== $form->get('password_confirm')->getData()) { // Si les mots de passe ne correspondent pas
+                $this->addFlash('error', 'Les mots de passe ne correspondent pas'); // Ajoute un message flash
+                $logger->error('Les mots de passe ne correspondent pas'); // Log l'erreur
+                return $this->redirectToRoute('app_signup'); // Redirige vers la page d'inscription
             }
 
             $hashedPassword = $this->passwordHasher->hashPassword($user, $form->get('password')->getData()); // Hash le mot de passe avec hasher
@@ -56,7 +56,7 @@ class SignupController extends AbstractController
         ]);
     }
 
-    #[Route('/signup/success', name: 'app_home')]
+    #[Route('/signup/success', name: 'app_success_signup')]
     public function success(): Response
     {
         return $this->render('home/index.html.twig', [
