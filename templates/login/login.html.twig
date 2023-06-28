@@ -5,30 +5,40 @@
 {% block title %}Connexion{% endblock %}
 
 {% block main %}
-<div class="top_block"> 
+<div class="titlePage">
     <h1>Se connecter</h1>
+    <div class="title">
     <p> Connectez-vous afin de pouvoir faire vos achats en toute discrétion. </p>
+    </div>
 </div>
     {% if error is defined %}
         <div class="alert alert-danger">{{ error }}</div>
     {% endif %}
  {# templates/login.html.twig #}
-<form method="POST" action="{{ path('login') }}">
+<div class="form-container">
+  <form method="POST" action="{{ path('login') }}">
     {{ form_start(form) }}
-    
+
     <div class="form-group">
-        {{ form_label(form.email) }}
-        {{ form_widget(form.email) }}
+      {{ form_label(form.email) }}
+      <br/>
+      <div class="insert">
+      {{ form_widget(form.email) }}
+      </div>
     </div>
-    
-    <div class="form-group">
-        {{ form_label(form.password) }}
-        {{ form_widget(form.password) }}
+    </br>
+    <div class="form-groupe">
+      {{ form_label(form.password) }}
+      <br/>
+       <div class="insert">
+      {{ form_widget(form.password) }}
+      </div>
     </div>
-    
+
     <button type="submit" class="btn btn-primary">Se connecter</button>
-    
+
     {{ form_end(form) }}
-</form>
+  </form>
+</div>
 
 {% endblock %}

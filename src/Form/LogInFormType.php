@@ -15,10 +15,16 @@ class LogInFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email de connexion :',
                 'required' => true,
+                'attr' => [
+                    'placeholder' => "Veuillez saisir votre mail ici..."
+                ]
             ])
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe :',
                 'required' => true,
+                'attr' => [
+                    'placeholder' => "Veuillez saisir votre mot de passe ici..."
+                ]
             ]);
     }
 }

@@ -1,5 +1,37 @@
-.top_block {
-    background-color: $darkgreencolor;
-    height: 30px;
-    width: 100px;
+.title {
+    color: beige;
+    position: absolute;
+    margin-top: 1.5%;
+    margin-bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+.form-container {
+    margin-top: 5%;
+    margin-left: -15%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+.insert {
+    input{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        padding-top: 10%;
+        padding-bottom: 10%;
+        padding-left: 10%;
+        padding-right: 90%;
+        border: 2px solid #5F7161;
+        background: #FFF;
+        color: red;
+        
+        
+
+        
+    }
+    .form-control{
+        color: red;
+    }
+    }
