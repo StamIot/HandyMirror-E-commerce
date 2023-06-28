@@ -9,9 +9,6 @@ send_email:
 confirm_account:
     path: /confirm-account/{token}
     controller: App\Controller\AccountConfirmationController::confirmAccount
-login:
-    path: /login
-    controller: App\Controller\LogInController::login
 home:
     path: /
     controller: App\Controller\HomeController::index

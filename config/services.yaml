@@ -13,10 +13,7 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@security.user_password_hasher.generic'
             - '@security.token_generator'
-            - '@mailer'   
-    App\Controller\LogInController:
-        arguments:
-            $entityManager: '@doctrine.orm.default_entity_manager'
+            - '@mailer'  
   
     # default configuration for services in *this* file
     _defaults:
