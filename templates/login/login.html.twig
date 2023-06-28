@@ -1,27 +1,34 @@
-{# templates/security/login.html.twig #}
+{# templates/login/login.html.twig #}
 
 {% extends 'base.html.twig' %}
 
 {% block title %}Connexion{% endblock %}
 
 {% block main %}
+<div class="top_block"> 
     <h1>Se connecter</h1>
     <p> Connectez-vous afin de pouvoir faire vos achats en toute discrétion. </p>
+</div>
     {% if error is defined %}
         <div class="alert alert-danger">{{ error }}</div>
     {% endif %}
+ {# templates/login.html.twig #}
+<form method="POST" action="{{ path('login') }}">
+    {{ form_start(form) }}
     
-    <form method="POST" action="{{ path('login') }}">
-        <div class="form-group">
-            <label for="email">Email de connexion :</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Se connecter</button>
-    </form>
+    <div class="form-group">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.password) }}
+        {{ form_widget(form.password) }}
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Se connecter</button>
+    
+    {{ form_end(form) }}
+</form>
+
 {% endblock %}

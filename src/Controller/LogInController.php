@@ -4,6 +4,7 @@ namespace App\Controller;
 
 // Importez les classes nécessaires
 use App\Entity\User;
+use App\Form\LogInFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -25,6 +26,13 @@ class LogInController extends AbstractController
     #[Route("/login", name: "login")]
     public function login(Request $request, SessionInterface $session, UserPasswordHasherInterface $passwordHasher)
     {
+        $form = $this->createForm(LogInFormType::class);
+        // Gérez la soumission du formulaire et le traitement ici
+
+        return $this->render('login/login.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
         if ($request->isMethod('POST')) {
             $email = $request->request->get('email');
             $password = $request->request->get('password');
