@@ -22,7 +22,7 @@ class LogInController extends AbstractController
         $this->entityManager = $entityManager;
     }
     
-    #[Route("/login", name: "login")]
+    #[Route("/login", name: "app_login")]
     public function login(Request $request, SessionInterface $session, UserPasswordHasherInterface $passwordHasher)
     {
         if ($request->isMethod('POST')) {
