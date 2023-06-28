@@ -1,0 +1,38 @@
+// =========================================================
+// RESPONSIVE
+// =========================================================
+
+// Phone
+@mixin xs {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+// Tablet
+@mixin sm {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+// Laptop
+@mixin lg {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}
+
+// Desktop
+@mixin xl {
+    @media (max-width: 1200px) {
+        @content;
+    }
+}
+
+// Screen Extra Large
+@mixin xxl {
+    @media (min-width: 1201px) {
+        @content;
+    }
+}
