@@ -1,10 +1,44 @@
 <header>
-    <img src="{{ asset('/images/logo.jpg') }}" alt="Notre logo">
     <nav>
-        <ul>
-            <li><a href="{{ path('app_home') }}">Accueil</a></li>
-            <li><a href="{{ path('app_about') }}">A propos</a></li>
-            <li><a href="{{ path('app_contact') }}">Contactez-nous</a></li>
+        <a href="{{ path('app_home') }}" class="ml-25">
+            <img src="{{ asset('/images/logo.jpg') }}" alt="Notre logo">
+        </a>
+        <ul class="mr-25">
+            <li title="Mon compte">
+                <a href="">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </li>
+            <li title="Nos produits">
+                <a href="{{ path('app_about') }}">
+                    <i class="fa-brands fa-shopify"></i>
+                </a>
+            </li>
+            <li title="Panier">
+                <a href="">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </li>
+            <li title="Panel Admin">
+                <a href="">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </a>
+            </li>
+            <li title="S'inscrire">
+                <a href="{{ path('app_signup') }}">
+                    <i class="fa-solid fa-user-plus"></i>
+                </a>
+            </li>
+            <li title="Se connecter">
+                <a href="{{ path('app_login') }}">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                </a>
+            </li> 
+            <li title="Se déconnecter">
+                <a href="">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
