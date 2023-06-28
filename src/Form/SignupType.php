@@ -15,7 +15,6 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Unique;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 class SignupType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -76,6 +75,7 @@ class SignupType extends AbstractType
                         'min' => 8,
                         'minMessage' => "Votre mot de passe doit contenir au moins {{ limit }} caractères"
                     ]),
+                    
                     new NotBlank(),
                 ],
                 'label' => 'Confirmer votre mot de passe :',
