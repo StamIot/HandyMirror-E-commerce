@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Unique;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class SignupType extends AbstractType
 {
@@ -57,11 +58,10 @@ class SignupType extends AbstractType
             ->add('password', PasswordType::class, [
                 // ajoute une contrainte de 8 caractères minimum
                 'constraints' => [
-                    new Length([
-                        'min' => 8,
-                        'minMessage' => "Votre mot de passe doit contenir au moins {{ limit }} caractères"
+                    new Assert\Regex([
+                        'pattern' => '/^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/',
+                        'message' => 'Le mot de passe doit contenir au moins une majuscule, un chiffre et un caractère spécial.',
                     ]),
-                    new NotBlank(),
                 ],
                 'label' => 'Votre mot de passe :',
                 'attr' => [
@@ -75,6 +75,7 @@ class SignupType extends AbstractType
                         'min' => 8,
                         'minMessage' => "Votre mot de passe doit contenir au moins {{ limit }} caractères"
                     ]),
+                    
                     new NotBlank(),
                 ],
                 'label' => 'Confirmer votre mot de passe :',
