@@ -1,0 +1,572 @@
+// =========================================================
+// FLEX
+// =========================================================
+// example_1 : <div class="d-flex flex-fill justify-end align-center">
+// example_2 : <div class="d-flex justify-center align-start">
+// example_3 : <div class="d-flex flex-column-reverse justify-start align-end">
+// example_4 : <div class="d-flex flex-row justify-center align-start">
+// example_5 : <div class="d-flex flex-fill justify-stretch">
+// =========================================================
+.d-flex {
+    display: flex;
+}
+
+.flex {
+    &-fill {
+        flex: 1; // Prendre tout l'espace disponible
+    }
+    &-row {
+        flex-direction: row;
+        &-reverse {
+            flex-direction: row-reverse;
+        }
+    }
+    &-column {
+        flex-direction: column;
+        &-reverse {
+            flex-direction: column-reverse;
+        }
+    }
+}
+
+// align-items
+.align {
+    &-start {
+        align-items: flex-start;
+    }
+    &-end {
+        align-items: flex-end;
+    }
+    &-center {
+        align-items: center;
+    }
+    &-stretch {
+        align-items: stretch;
+    }
+}
+
+// justify-content
+.justify {
+    &-start {
+        justify-content: flex-start;
+    }
+    &-end {
+        justify-content: flex-end;
+    }
+    &-center {
+        justify-content: center;
+    }
+    &-stretch {
+        justify-content: stretch;
+    }
+}
+
+// =========================================================
+// MARGIN
+// =========================================================
+// example_1 : <p class="m-5">
+// example_2 : <p class="mr-15">
+// example_3 : <p class="my-50">
+// example_4 : <p class="my-25 mx-50">
+// example_5 : <p class="ml-35">
+// =========================================================
+.m {
+    // margin
+    &-5 {
+        margin: 5px;
+    }
+    &-10 {
+        margin: 10px;
+    }
+    &-15 {
+        margin: 15px;
+    }
+    &-20 {
+        margin: 20px;
+    }
+    &-25 {
+        margin: 25px;
+    }
+    &-30 {
+        margin: 30px;
+    }
+    &-35 {
+        margin: 35px;
+    }
+    &-40 {
+        margin: 40px;
+    }
+    &-45 {
+        margin: 45px;
+    }
+    &-50 {
+        margin: 50px;
+    }
+
+    // margin-top
+    &t-5 {
+        margin-top: 5px;
+    }
+    &t-10 {
+        margin-top: 10px;
+    }
+    &t-15 {
+        margin-top: 15px;
+    }
+    &t-20 {
+        margin-top: 20px;
+    }
+    &t-25 {
+        margin-top: 25px;
+    }
+    &t-30 {
+        margin-top: 30px;
+    }
+    &t-35 {
+        margin-top: 35px;
+    }
+    &t-40 {
+        margin-top: 40px;
+    }
+    &t-45 {
+        margin-top: 45px;
+    }
+    &t-50 {
+        margin-top: 50px;
+    }
+
+    // margin-right
+    &r-5 {
+        margin-right: 5px;
+    }
+    &r-10 {
+        margin-right: 10px;
+    }
+    &r-15 {
+        margin-right: 15px;
+    }
+    &r-20 {
+        margin-right: 20px;
+    }
+    &r-25 {
+        margin-right: 25px;
+    }
+    &r-30 {
+        margin-right: 30px;
+    }
+    &r-35 {
+        margin-right: 35px;
+    }
+    &r-40 {
+        margin-right: 40px;
+    }
+    &r-45 {
+        margin-right: 45px;
+    }
+    &r-50 {
+        margin-right: 50px;
+    }
+
+    // margin-bottom
+    &b-5 {
+        margin-bottom: 5px;
+    }
+    &b-10 {
+        margin-bottom: 10px;
+    }
+    &b-15 {
+        margin-bottom: 15px;
+    }
+    &b-20 {
+        margin-bottom: 20px;
+    }
+    &b-25 {
+        margin-bottom: 25px;
+    }
+    &b-30 {
+        margin-bottom: 30px;
+    }
+    &b-35 {
+        margin-bottom: 35px;
+    }
+    &b-40 {
+        margin-bottom: 40px;
+    }
+    &b-45 {
+        margin-bottom: 45px;
+    }
+    &b-50 {
+        margin-bottom: 50px;
+    }
+
+    // margin-left
+    &l-5 {
+        margin-left: 5px;
+    }
+    &l-10 {
+        margin-left: 10px;
+    }
+    &l-15 {
+        margin-left: 15px;
+    }
+    &l-20 {
+        margin-left: 20px;
+    }
+    &l-25 {
+        margin-left: 25px;
+    }
+    &l-30 {
+        margin-left: 30px;
+    }
+    &l-35 {
+        margin-left: 35px;
+    }
+    &l-40 {
+        margin-left: 40px;
+    }
+    &l-45 {
+        margin-left: 45px;
+    }
+    &l-50 {
+        margin-left: 50px;
+    }
+
+    // margin-vertical
+    &y-5 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    &y-10 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    &y-15 {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    &y-20 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    &y-25 {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    &y-30 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    &y-35 {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+    &y-40 {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    &y-45 {
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    &y-50 {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    // margin-horizontal
+    &x-5 {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    &x-10 {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    &x-15 {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    &x-20 {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    &x-25 {
+        margin-right: 25px;
+        margin-left: 25px;
+    }
+    &x-30 {
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+    &x-35 {
+        margin-right: 35px;
+        margin-left: 35px;
+    }
+    &x-40 {
+        margin-right: 40px;
+        margin-left: 40px;
+    }
+    &x-45 {
+        margin-right: 45px;
+        margin-left: 45px;
+    }
+    &x-50 {
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+}
+
+// =========================================================
+// PADDING
+// =========================================================
+// example_1 : <p class="p-5">
+// example_2 : <p class="pr-15">
+// example_3 : <p class="py-50">
+// example_4 : <p class="py-25 px-50">
+// example_5 : <p class="pl-35">
+// =========================================================
+.p {
+    // padding
+    &-5 {
+        padding: 5px;
+    }
+    &-10 {
+        padding: 10px;
+    }
+    &-15 {
+        padding: 15px;
+    }
+    &-20 {
+        padding: 20px;
+    }
+    &-25 {
+        padding: 25px;
+    }
+    &-30 {
+        padding: 30px;
+    }
+    &-35 {
+        padding: 35px;
+    }
+    &-40 {
+        padding: 40px;
+    }
+    &-45 {
+        padding: 45px;
+    }
+    &-50 {
+        padding: 50px;
+    }
+
+    // padding-top
+    &t-5 {
+        padding-top: 5px;
+    }
+    &t-10 {
+        padding-top: 10px;
+    }
+    &t-15 {
+        padding-top: 15px;
+    }
+    &t-20 {
+        padding-top: 20px;
+    }
+    &t-25 {
+        padding-top: 25px;
+    }
+    &t-30 {
+        padding-top: 30px;
+    }
+    &t-35 {
+        padding-top: 35px;
+    }
+    &t-40 {
+        padding-top: 40px;
+    }
+    &t-45 {
+        padding-top: 45px;
+    }
+    &t-50 {
+        padding-top: 50px;
+    }
+
+    // padding-right
+    &r-5 {
+        padding-right: 5px;
+    }
+    &r-10 {
+        padding-right: 10px;
+    }
+    &r-15 {
+        padding-right: 15px;
+    }
+    &r-20 {
+        padding-right: 20px;
+    }
+    &r-25 {
+        padding-right: 25px;
+    }
+    &r-30 {
+        padding-right: 30px;
+    }
+    &r-35 {
+        padding-right: 35px;
+    }
+    &r-40 {
+        padding-right: 40px;
+    }
+    &r-45 {
+        padding-right: 45px;
+    }
+    &r-50 {
+        padding-right: 50px;
+    }
+
+    // padding-bottom
+    &b-5 {
+        padding-bottom: 5px;
+    }
+    &b-10 {
+        padding-bottom: 10px;
+    }
+    &b-15 {
+        padding-bottom: 15px;
+    }
+    &b-20 {
+        padding-bottom: 20px;
+    }
+    &b-25 {
+        padding-bottom: 25px;
+    }
+    &b-30 {
+        padding-bottom: 30px;
+    }
+    &b-35 {
+        padding-bottom: 35px;
+    }
+    &b-40 {
+        padding-bottom: 40px;
+    }
+    &b-45 {
+        padding-bottom: 45px;
+    }
+    &b-50 {
+        padding-bottom: 50px;
+    }
+
+    // padding-left
+    &l-5 {
+        padding-left: 5px;
+    }
+    &l-10 {
+        padding-left: 10px;
+    }
+    &l-15 {
+        padding-left: 15px;
+    }
+    &l-20 {
+        padding-left: 20px;
+    }
+    &l-25 {
+        padding-left: 25px;
+    }
+    &l-30 {
+        padding-left: 30px;
+    }
+    &l-35 {
+        padding-left: 35px;
+    }
+    &l-40 {
+        padding-left: 40px;
+    }
+    &l-45 {
+        padding-left: 45px;
+    }
+    &l-50 {
+        padding-left: 50px;
+    }
+
+    // padding-vertical
+    &y-5 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    &y-10 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    &y-15 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    &y-20 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    &y-25 {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    &y-30 {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    &y-35 {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+    &y-40 {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    &y-45 {
+        padding-top: 45px;
+        padding-bottom: 45px;
+    }
+    &y-50 {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    // padding-horizontal
+    &x-5 {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    &x-10 {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    &x-15 {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    &x-20 {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    &x-25 {
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+    &x-30 {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+    &x-35 {
+        padding-right: 35px;
+        padding-left: 35px;
+    }
+    &x-40 {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+    &x-45 {
+        padding-right: 45px;
+        padding-left: 45px;
+    }
+    &x-50 {
+        padding-right: 50px;
+        padding-left: 50px;
+    }
+}
