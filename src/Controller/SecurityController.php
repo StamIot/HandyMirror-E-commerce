@@ -25,14 +25,13 @@ class SecurityController extends AbstractController
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
-        // last username entered by the user
         return $this->render('security/login_form.html.twig', [
             'form' => $form->createView(),
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('security/login_form.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
     /**
      * @Route("/logout", name="app_logout")
