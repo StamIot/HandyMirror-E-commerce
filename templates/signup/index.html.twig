@@ -14,7 +14,17 @@
                 {{ flashMessage }}
             </div>
         {% endfor %}
-        
+
+
+
+        {# {{ form_row(formSignup.firstname) }}
+        {{ form_row(formSignup.lastname) }}
+        {{ form_row(formSignup.email) }}
+        {{ form_row(formSignup.password.first) }}
+        {{ form_row(formSignup.password.second) }}
+        {{ form_row(formSignup.submit) }}
+     #}
         {{ form(formSignup) }}
+
     </section>
 {% endblock %}
