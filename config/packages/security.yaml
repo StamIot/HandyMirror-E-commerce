@@ -29,6 +29,9 @@ security:
                 # target: app_any_route
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
+            remember_me:
+                secret: '%kernel.secret%' # required
+                lifetime: 604800
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true

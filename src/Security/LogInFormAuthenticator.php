@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
@@ -27,17 +28,24 @@ class LogInFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): Passport
     {
+        // Récupérer les données d'authentification (e-mail, mot de passe, etc.)
         $email = $request->request->get('email', '');
+        $password = $request->request->get('password', '');
 
         $request->getSession()->set(Security::LAST_USERNAME, $email);
 
-        return new Passport(
-            new UserBadge($email),
-            new PasswordCredentials($request->request->get('password', '')),
-            [
-                new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
-            ]
-        );
+    // badge RememberMeBadge
+    $badges = [
+        new RememberMeBadge(),
+        new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
+    ];
+
+    return new Passport(
+        new UserBadge($email),
+        new PasswordCredentials($password),
+        $badges
+    );
+
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
