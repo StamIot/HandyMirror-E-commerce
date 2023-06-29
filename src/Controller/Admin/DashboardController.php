@@ -47,10 +47,10 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
 
             MenuItem::section('Clients'),
-            MenuItem::linkToCrud('User', 'fa fa-tags', User::class),
+            MenuItem::linkToCrud('User', 'fas fa-user', User::class),
 
             MenuItem::section('Produits'),
-            MenuItem::linkToCrud('Produit', 'fa fa-comment', Product::class)
+            MenuItem::linkToCrud('Produit', 'fas fa-shopping-cart', Product::class)
         ];
     }
 }
