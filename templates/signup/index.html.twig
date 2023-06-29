@@ -7,7 +7,14 @@
         <h1>{{ titlePage | upper }}</h1>
     </div>
 
+    {## Je fais un for pour les messages d'erreur concernant le mot de passe incorrect est le mail déjà utiliser ##}
     <section class="m-5">
+        {% for flashMessage in app.flashes('error') %} 
+            <div class="alert alert-danger">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        
         {{ form(formSignup) }}
     </section>
 {% endblock %}
