@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reset your password{% endblock %}
+{% block title %}Réinitialiser le mot de passe{% endblock %}
 
 {% block main %}
-    <h1>Modifier votre mot de passe</h1>
+<div class="titlePage">
+    <h1>MOT DE PASSE OUBLIÉ</h1>
+    <div class="title">
+    <p>Vous avez perdu l’accès à votre compte ? pas de panique<p>
+    </div>
+</div>
 
     {{ form_start(resetForm) }}
         {{ form_row(resetForm.plainPassword) }}
