@@ -4,11 +4,7 @@
             <img src="{{ asset('/images/logo.jpg') }}" alt="Notre logo">
         </a>
         <ul class="mr-25">
-            <li title="Mon compte">
-                <a href="">
-                    <i class="fa-solid fa-user"></i>
-                </a>
-            </li>
+            {% if is_granted ('ROLE_USER')  %}
             <li title="Nos produits">
                 <a href="{{ path('app_about') }}">
                     <i class="fa-brands fa-shopify"></i>
@@ -19,9 +15,21 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                 </a>
             </li>
-            <li title="Panel Admin">
-                <a href="{{ path('app_admin') }}">
-                    <i class="fa-solid fa-laptop-code"></i>
+            <li title="Mon compte">
+                <a href="">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </li>
+            <li title="Se déconnecter">
+                <a href="{{ path('app_logout') }}">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </li>
+            {% endif %}
+            {% if not is_granted ('ROLE_USER') and not is_granted ('ROLE_ADMIN')  %}
+            <li title="Nos produits">
+                <a href="{{ path('app_about') }}">
+                    <i class="fa-brands fa-shopify"></i>
                 </a>
             </li>
             <li title="S'inscrire">
@@ -34,11 +42,28 @@
                     <i class="fa-solid fa-right-to-bracket"></i>
                 </a>
             </li> 
+            {% endif %}
+
+            {% if is_granted ('ROLE_ADMIN')  %}
+            <li title="Nos produits">
+                <a href="{{ path('app_about') }}">
+                    <i class="fa-brands fa-shopify"></i>
+                </a>
+            </li>
+            
+            <li title="Panel Admin">
+                <a href="{{ path('app_admin') }}">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </a>
+            </li>
+            
             <li title="Se déconnecter">
                 <a href="{{ path('app_logout') }}">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </a>
             </li>
+            {% endif %}
+            
         </ul>
     </nav>
 </header>

@@ -44,6 +44,12 @@
             "ref": "b131e6cbfe1b898a508987851963fff485986285"
         }
     },
+    "php-flasher/flasher-symfony": {
+        "version": "v1.15.3"
+    },
+    "php-flasher/flasher-toastr-symfony": {
+        "version": "v1.15.3"
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
