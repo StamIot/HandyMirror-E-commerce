@@ -4,60 +4,52 @@
 
 {% block main %}
 
-       <div class="titlePage">
+    <div class="titlePage">
         <h1>Se connecter</h1>
         <div class="title">
             <p> Connectez-vous afin de pouvoir faire vos achats en toute discrétion. </p>
         </div> <!-- end title -->
     </div> <!-- end titleContainer -->
 
-<div class="block">
-    <div class="form-container">
-    <form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-    {# {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %} #}
-    <div class="form-group">
-    <div class="labelForm">
-    <label for="inputEmail">E-mail de connexion</label><br/>
-    </div>
-        <div class="insert">
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Inscrivez votre e-mail ici..." class="form-control" autocomplete="email" required autofocus><br/>
-    </div>
-        </div> 
+    <div class="block">
+        <div class="form-container">
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                
+                <div class="form-group">
+                    <div class="labelForm">
+                        <label for="inputEmail">E-mail de connexion</label><br/>
+                    </div>
+                    <div class="insert">
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Inscrivez votre e-mail ici..." class="form-control" autocomplete="email" required autofocus><br/>
+                    </div>
+                </div> 
 
-     <div class="form-group">
-     <div class="labelForm">
-    <label for="inputPassword">Mot de passe</label><br/>
-    </div>
-        <div class="insert">
-    <input type="password" name="password" id="inputPassword" placeholder="Inscrivez votre mot de passe ici..."  class="form-control" autocomplete="current-password" required><br/>
-    </div>
-        </div> 
+                <div class="form-group">
+                    <div class="labelForm">
+                        <label for="inputPassword">Mot de passe</label><br/>
+                    </div>
+                    <div class="insert">
+                        <input type="password" name="password" id="inputPassword" placeholder="Inscrivez votre mot de passe ici..."  class="form-control" autocomplete="current-password" required><br/>
+                    </div>
+                </div> 
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-        <div class="checkbox mb-3">
-        <div class="labelFormRemember">
-            <label>
-                <input type="checkbox" name="_remember_me"> Se souvenir de moi
-            </label>
-        </div>
-        </div>
-    <div class="ButtonSubmit"
-    <button class="btn btn-lg btn-primary" type="submit">
-        SE CONNECTER
-    </button>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <div class="checkbox mb-3">
+                    <div class="labelFormRemember">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                        </label>
+                    </div>
+                </div>
+                    <button class="btn btn-lg btn-primary ButtonSubmit" type="submit">
+                        SE CONNECTER
+                    </button>           
+                    <a class="ForgotPassword" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>         
+            </form>
+        </div> <!-- end form-container -->
     </div>
-    <div class="ForgotPassword"
-    <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
-</form>
-  </div> <!-- end form-container -->
-</div>
 {% endblock %}
