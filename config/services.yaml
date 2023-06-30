@@ -13,7 +13,7 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@security.user_password_hasher.generic'
             - '@security.token_generator'
-            - '@mailer'  
+            - '@mailer'
   
     # default configuration for services in *this* file
     _defaults:
