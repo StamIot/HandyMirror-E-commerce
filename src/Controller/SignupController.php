@@ -24,30 +24,36 @@ class SignupController extends AbstractController
         $this->passwordHasher = $passwordHasher;
     }
 
-    /**
-     * @Route("/signup", name="app_signup", methods={"GET", "POST"})
-     */
+    #[Route('/signup', name: "app_signup", methods: ["GET", "POST"])]
     public function index(Request $request, LoggerInterface $logger, HandyLogs $handyLogs): Response
     {
         $user = new User();
         $form = $this->createForm(SignupType::class, $user);
 
-        // J'écoute la requête et je récupère les données du formulaire
+        // J'écoute la requête du formulaire
         $form->handleRequest($request);
+
+        // dd($form->getData());
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $handyLogs->writeInfo("Un utilisateur est sur le point de s'inscrire sur le site");
+            $logger->info("Un nouvel utilisateur est sur le point de s'inscrire sur le site"); // Logger (Terminal)
+            $handyLogs->writeInfo("Un nouvel utilisateur est sur le point de s'inscrire sur le site"); // HandyLogs (Fichier)
+
+            // Vérification de l'existance du mail dans la base de données
+            $userExist = $this->entityManager->getRepository(User::class)->findOneBy(
+                ['email' => $form->get('email')->getData()]
+            );
 
             // Je fais mon traitement si le mail existe déjà dans la base de données
             $userExists = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $form->get('email')->getData()]); // j'intérroge la base de données pour savoir si l'email existe déjà
             if ($userExists) {
-                $logger->error('Un utilisateur avec cette adresse email existe déjà');
-                $handyLogs->writeError("Un utilisateur avec cette adresse email existe déjà");
-                // $this->addFlash('error', 'Un utilisateur avec cette adresse email existe déjà'); // j'envoie un message flash à la vue 
+                $message = "Le nouvel utilisateur dispose déjà de cette adresse e-mail (" . $form->get('email')->getData() . "). Inscription annulé.";
 
+                $logger->error($message); // Logger (Terminal)
+                $handyLogs->writeError($message); // HandyLogs (Fichier)
+              
                 // J'utilise le système de notification pour dire que l'email existe déjà
-
                 toastr()
                     ->positionClass('toast-top-full-width')
                     ->timeOut("5000")
@@ -55,13 +61,17 @@ class SignupController extends AbstractController
                     ->tapToDismiss(true)
                     ->addWarning("<strong style='color: #333333;'>" . $user->getEmail() . "</strong> existe déjà dans la base de données");
 
-
                 return $this->redirectToRoute('app_signup');
-            } 
+            }
 
-            // Je fais mon traitement pour vérifier si les mot de passe son identique
-            if ($form->get('password')->getData() !== $form->get('password_confirm')->getData()) { 
+            // Vérification de la conformité des deux mots de passes.
+            if (
+                $form->get('password')->getData() !==
+                $form->get('password_confirm')->getData()
+            ) {
+                // Logger (Terminal)
                 $logger->error('Les mots de passe ne correspondent pas');
+                // HandyLogs (Fichier)
                 $handyLogs->writeError("Les mots de passe ne correspondent pas");
                 // $this->addFlash('error', 'Les mots de passe ne correspondent pas'); // Ici aussi j'envoie un message flash à la vue
 
@@ -76,17 +86,20 @@ class SignupController extends AbstractController
                 return $this->redirectToRoute('app_signup');
             }
 
-            // Si tout se passe bien je fais un hash du mot de passe
+            // Tout est OK ici, hash du mot de passe
             $hashedPassword = $this->passwordHasher->hashPassword($user, $form->get('password')->getData());
             $user->setPassword($hashedPassword);
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
-            
-            // Ici j'utilise le service de log par HandiMirror pour dire q'un utilisateur vient de s'inscrire dans les logs
-            $logger->notice('Un utilisateur vient de s\'inscrire');
-            $handyLogs->writeSuccess("Un utilisateur vient de s'inscrire sur le site");
 
+              $logger->notice(
+                $form->get("firstname")->getData() . " " . $form->get("lastname")->getData() . " vient de s'inscrire"
+            ); // Logger (Terminal)
+            $handyLogs->writeSuccess(
+                $form->get("firstname")->getData() . " " . $form->get("lastname")->getData() . " vient de s'inscrire"
+            ); // HandyLogs (Fichier)
+  
             toastr()
                 ->positionClass('toast-top-full-width')
                 ->timeOut("5000")
@@ -100,7 +113,6 @@ class SignupController extends AbstractController
                 ->preventDuplicates(true)
                 ->tapToDismiss(true)
                 ->addInfo("<strong style='color: white;'>" . $user->getFirstname() . "</strong>, tu peux te connecter maintenant.");
-
 
             return $this->redirectToRoute('app_login');
         }
