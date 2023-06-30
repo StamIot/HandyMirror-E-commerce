@@ -45,13 +45,22 @@ class SignupController extends AbstractController
                 ['email' => $form->get('email')->getData()]
             );
 
-            if ($userExist) {
+            // Je fais mon traitement si le mail existe déjà dans la base de données
+            $userExists = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $form->get('email')->getData()]); // j'intérroge la base de données pour savoir si l'email existe déjà
+            if ($userExists) {
                 $message = "Le nouvel utilisateur dispose déjà de cette adresse e-mail (" . $form->get('email')->getData() . "). Inscription annulé.";
 
                 $logger->error($message); // Logger (Terminal)
                 $handyLogs->writeError($message); // HandyLogs (Fichier)
-                // A REVOIR // j'envoie un message flash à la vue 
-                $this->addFlash('error', 'Un utilisateur avec cette adresse email existe déjà');
+              
+                // J'utilise le système de notification pour dire que l'email existe déjà
+                toastr()
+                    ->positionClass('toast-top-full-width')
+                    ->timeOut("5000")
+                    ->preventDuplicates(true)
+                    ->tapToDismiss(true)
+                    ->addWarning("<strong style='color: #333333;'>" . $user->getEmail() . "</strong> existe déjà dans la base de données");
+
                 return $this->redirectToRoute('app_signup');
             }
 
@@ -64,7 +73,16 @@ class SignupController extends AbstractController
                 $logger->error('Les mots de passe ne correspondent pas');
                 // HandyLogs (Fichier)
                 $handyLogs->writeError("Les mots de passe ne correspondent pas");
-                $this->addFlash('error', 'Les mots de passe ne correspondent pas');
+                // $this->addFlash('error', 'Les mots de passe ne correspondent pas'); // Ici aussi j'envoie un message flash à la vue
+
+                // J'utilise le toastr pour dire que les mots de passe ne correspondent pas
+                toastr()
+                    ->positionClass('toast-top-full-width')
+                    ->timeOut("5000")
+                    ->preventDuplicates(true)
+                    ->tapToDismiss(true)
+                    ->addError("<strong style='color: #333333;'>" . $user->getFirstname() . "</strong>, tes mots de passe ne correspondent pas");
+
                 return $this->redirectToRoute('app_signup');
             }
 
@@ -75,18 +93,32 @@ class SignupController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            $logger->notice(
+              $logger->notice(
                 $form->get("firstname")->getData() . " " . $form->get("lastname")->getData() . " vient de s'inscrire"
             ); // Logger (Terminal)
             $handyLogs->writeSuccess(
                 $form->get("firstname")->getData() . " " . $form->get("lastname")->getData() . " vient de s'inscrire"
             ); // HandyLogs (Fichier)
+  
+            toastr()
+                ->positionClass('toast-top-full-width')
+                ->timeOut("5000")
+                ->preventDuplicates(true)
+                ->tapToDismiss(true)
+                ->addSuccess("<strong style='color: white;'>" . $user->getFirstname() . "</strong>, la création de ton compte a bien été effectuée.");
+
+            toastr()
+                ->positionClass('toast-top-full-width')
+                ->timeOut("5000")
+                ->preventDuplicates(true)
+                ->tapToDismiss(true)
+                ->addInfo("<strong style='color: white;'>" . $user->getFirstname() . "</strong>, tu peux te connecter maintenant.");
 
             return $this->redirectToRoute('app_login');
         }
 
         return $this->render('signup/index.html.twig', [
-            'titlePage' => "S'inscrire",
+            'titlePage' => "Inscription",
             'formSignup' => $form->createView()
         ]);
     }
