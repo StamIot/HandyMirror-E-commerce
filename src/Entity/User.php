@@ -69,18 +69,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // guarantee every user at least has ROLE_USER
         // $roles[] = 'ROLE_USER';
         
-        if ($this->getEmail() === "t.taguine@it-students.fr") {
-            $roles[] = 'ROLE_ADMIN';
+        // if ($this->getEmail() === "t.taguine@it-students.fr") {
+        //     $roles[] = 'ROLE_ADMIN';
 
-            toastr()
-            ->positionClass('toast-top-full-width')
-            ->timeOut("5000")
-            ->preventDuplicates(true)
-            ->tapToDismiss(true)
-            ->addSuccess("Tu est bien connecté en Admin.");
+        //     toastr()
+        //     ->positionClass('toast-top-full-width')
+        //     ->timeOut("5000")
+        //     ->tapToDismiss(true)
+        //     ->addSuccess("Tu est bien connecté en Admin.");
 
-        } else {
-            $roles[] = 'ROLE_USER';
+        // } else {
+        //     $roles[] = 'ROLE_USER';
+        // }
+
+        switch ($this->getEmail()) {
+            case 'z.aboukheir@it-students.fr':
+            case 'a.guillon@it-students.fr':
+            case 's.majorel@it-students.fr':
+            case 't.taguine@it-students.fr':
+                $roles[] = 'ROLE_ADMIN';
+                break;
+            default:
+                $roles[] = 'ROLE_USER';
+                break;
         }
 
         return array_unique($roles);
