@@ -1,0 +1,116 @@
+.about__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    background-color: $white-color;
+    padding: 10%;
+
+    @include md {
+        grid-template-columns: 1fr 1fr;
+    }
+    @include xl {
+        padding: 5% 2.5%;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .card {
+        border: 1px solid $primary-color;
+        box-shadow: $box-shadow;
+        border-radius: 12px;
+        width: 100%;
+
+        &__header {
+            height: 150px;
+            display: flex;
+            padding: 5%;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            border-radius: 12px 12px 0 0;
+            background-color: $primary-color;
+
+            @include sm {
+                height: 250px;
+                padding: 10%;
+            }
+
+            h2 {
+                color: $white-color;
+                font-size: calc(5vmin);
+                margin-bottom: 12px;
+                letter-spacing: 5px;
+                text-align: center;
+
+                @include sm {
+                    font-size: calc(5vmin);
+                }
+                @include md {
+                    font-size: calc(4vmin);
+                }
+                @include xl {
+                    font-size: calc(3vmin);
+                }
+            }
+            h3 {
+                color: $gray-color;
+                font-size: calc(4vmin);
+                text-align: center;
+                @include md {
+                    font-size: calc(3vmin);
+                }
+            }
+            img {
+                border-radius: 50%;
+                height: 100px;
+                width: 100px;
+                position: absolute;
+                bottom: -50px;
+                border: 6px solid $secondary-color;
+                box-shadow: 0 0 5px $black-color;
+
+                @include sm {
+                    height: 150px;
+                    width: 150px;
+                    bottom: -75px;
+                }
+            }
+        }
+        &__body {
+            padding: 20% 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            box-shadow: inset 0 0 150px $black-color-dark;
+            height: 450px;
+            overflow-y: scroll;
+            text-align: center;
+            @include md {
+                padding: 30% 10% 20%;
+            }
+            p {
+                font-style: italic;
+                margin-bottom: 12px;
+                &::first-letter {
+                    font-size: calc(5vmin);
+                    color: $primary-color;
+                }
+            }
+        }
+        &__footer {
+            background-color: $black-color-dark;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            a {
+                display: block;
+                height: 60%;
+                img {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

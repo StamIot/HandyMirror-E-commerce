@@ -1,38 +1,38 @@
 // =========================================================
-// RESPONSIVE
+// RESPONSIVE - MOBILE FIRST 0 > 576px by default
 // =========================================================
 
-// Phone
-@mixin xs {
-    @media (max-width: 480px) {
-        @content;
-    }
-}
-
-// Tablet
+// Small devices (landscape phones, 576px and up)
 @mixin sm {
-    @media (max-width: 768px) {
+    @media screen and (min-width: 576px) {
         @content;
     }
 }
 
-// Laptop
+// Medium devices (tablets, 768px and up)
+@mixin md {
+    @media screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+// Large devices (desktops, 992px and up)
 @mixin lg {
-    @media (max-width: 1024px) {
+    @media screen and (min-width: 992px) {
         @content;
     }
 }
 
-// Desktop
+// X-Large devices (large desktops, 1200px and up)
 @mixin xl {
-    @media (max-width: 1200px) {
+    @media screen and (min-width: 1200px) {
         @content;
     }
 }
 
-// Screen Extra Large
+// XX-Large devices (larger desktops, 1400px and up)
 @mixin xxl {
-    @media (min-width: 1201px) {
+    @media screen and (min-width: 1400px) {
         @content;
     }
 }
