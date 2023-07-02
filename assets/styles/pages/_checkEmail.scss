@@ -1,0 +1,19 @@
+.checkEmail__container {
+    padding: 10%;
+    width: 100%;
+    margin: 0 auto;
+    @include md {
+        width: 80%;
+    }
+    @include lg {
+        width: 60%;
+    }
+    p {
+        a {
+            color: $secondary-color;
+            text-decoration: underline;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+}

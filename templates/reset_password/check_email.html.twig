@@ -3,9 +3,18 @@
 {% block title %}Mot de passe oublié ? Pas de panique !{% endblock %}
 
 {% block main %}
-    <p>
-        Salut ! Mon petit doigt m'a dit que t'avais perdu ton mot de passe ? Pas de panique, si l'adresse mail que tu nous as communiqué existe en base de donnéee un mail te serra envoyé.
-        Le lien expire dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
-    </p>
-    <p>Si tu ne reçois pas l'email dans ta boite ou dans tes spam <a href="{{ path('app_forgot_password_request') }}">réessaye</a>.</p>
+    <div class="title__container">
+        <h1>{{ titleH1 | upper }}</h1>
+        <p class="title__message">Salut ! Mon petit doigt m'a dit que t'avais perdu ton mot de passe ? Pas de panique</p>
+    </div>
+    <section class="checkEmail__container">
+        <p>
+            Si l'adresse mail que tu nous as communiqué existe en base de donnée, tu devrais théoriquement recevoir un email te proposant de réinitialiser ton mot de passe.
+        </p>
+        <div class="alert alert-warning my-25">
+            Le lien expire dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+        </div>
+        <p>Si tu ne reçois pas l'email dans ta boite mail, vérifie dans tes spam ou bien, <a href="{{ path('app_forgot_password_request') }}" class="checkEmail__link">réessaye</a> avec un autre email.</p>
+    </section>
+    <p></p>
 {% endblock %}

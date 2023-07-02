@@ -49,6 +49,7 @@ class ResetPasswordController extends AbstractController
         }
 
         return $this->render('reset_password/request.html.twig', [
+            'titleH1' => "Mot de passe oublié",
             'requestForm' => $form->createView(),
         ]);
     }
@@ -66,6 +67,7 @@ class ResetPasswordController extends AbstractController
         }
 
         return $this->render('reset_password/check_email.html.twig', [
+            'titleH1' => "Email envoyé",
             'resetToken' => $resetToken,
         ]);
     }
@@ -147,7 +149,7 @@ class ResetPasswordController extends AbstractController
             // If you want to tell the user why a reset email was not sent, uncomment
             // the lines below and change the redirect to 'app_forgot_password_request'.
             // Caution: This may reveal if a user is registered or not.
-            
+
             // $this->addFlash('reset_password_error', sprintf(
             //     '%s - %s',
             //     $translator->trans(ResetPasswordExceptionInterface::MESSAGE_PROBLEM_HANDLE, [], 'ResetPasswordBundle'),
@@ -164,8 +166,7 @@ class ResetPasswordController extends AbstractController
             ->htmlTemplate('reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,
-            ])
-        ;
+            ]);
 
         $mailer->send($email);
 
