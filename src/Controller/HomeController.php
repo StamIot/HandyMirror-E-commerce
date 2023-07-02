@@ -25,7 +25,7 @@ class HomeController extends AbstractController
         // $handylogs->writeSuccess("Je suis un message de succès");
 
         return $this->render('home/index.html.twig', [
-            'titlePage' => 'handy mirror',
+            'titleH1' => 'handy mirror',
         ]);
     }
 }

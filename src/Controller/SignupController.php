@@ -52,7 +52,7 @@ class SignupController extends AbstractController
 
                 $logger->error($message); // Logger (Terminal)
                 $handyLogs->writeError($message); // HandyLogs (Fichier)
-              
+
                 // J'utilise le système de notification pour dire que l'email existe déjà
                 toastr()
                     ->positionClass('toast-top-full-width')
@@ -93,13 +93,13 @@ class SignupController extends AbstractController
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-              $logger->notice(
+            $logger->notice(
                 $form->get("firstname")->getData() . " " . $form->get("lastname")->getData() . " vient de s'inscrire"
             ); // Logger (Terminal)
             $handyLogs->writeSuccess(
                 $form->get("firstname")->getData() . " " . $form->get("lastname")->getData() . " vient de s'inscrire"
             ); // HandyLogs (Fichier)
-  
+
             toastr()
                 ->positionClass('toast-top-full-width')
                 ->timeOut("5000")
@@ -118,7 +118,7 @@ class SignupController extends AbstractController
         }
 
         return $this->render('signup/index.html.twig', [
-            'titlePage' => "Inscription",
+            'titleH1' => "Inscription",
             'formSignup' => $form->createView()
         ]);
     }

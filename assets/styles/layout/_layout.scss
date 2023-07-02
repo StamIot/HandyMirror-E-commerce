@@ -13,4 +13,15 @@ body {
 main {
     flex: 1;
     max-width: 100%;
+    .title__container {
+        background-color: $primary-color;
+        padding: 60px 0;
+        /* main div.titleContainer h1 */
+        h1 {
+            color: $creame-color;
+            font-size: 48px;
+            text-align: center;
+            text-shadow: 2px 2px $black-color;
+        }
+    }
 }
