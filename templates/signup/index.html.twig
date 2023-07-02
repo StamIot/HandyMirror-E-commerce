@@ -5,26 +5,17 @@
 {% block main %}
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>
+        <p class="title__message">Nous sommes heureux de vous compter prochainement parmis nous</p>
     </div>
 
     {## Je fais un for pour les messages d'erreur concernant le mot de passe incorrect est le mail déjà utiliser ##}
-    <section class="m-5">
+    <section class="form__container">
         {% for flashMessage in app.flashes('error') %} 
             <div class="alert alert-danger">
                 {{ flashMessage }}
             </div>
         {% endfor %}
 
-
-
-        {# {{ form_row(formSignup.firstname) }}
-        {{ form_row(formSignup.lastname) }}
-        {{ form_row(formSignup.email) }}
-        {{ form_row(formSignup.password.first) }}
-        {{ form_row(formSignup.password.second) }}
-        {{ form_row(formSignup.submit) }}
-     #}
         {{ form(formSignup) }}
-
     </section>
 {% endblock %}
