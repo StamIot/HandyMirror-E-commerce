@@ -6,12 +6,46 @@
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>
     </div>
-    <section class="describe__content">
+    <section class="describe__container">
+        <div>{% include '/home/describe_product.html.twig' %}</div>
+        <img src="{{ asset("/images/objectifs.jpg")}}" alt="Différents outils visant à promouvoir l'handicap" />
+        <a href="{{ path ('app_products_list') }}" class="btn btn-primary">Achetez le votre</a>
+    </section>
+
+    <section class="greenIt__container">
+        <figure>
+            <div>
+                <img src="{{ asset ('/images/greenit.jpg') }}" alt="logo greenIt">
+            </div>
+            <figcaption>
+                Notre produit est éco-conçu dans une démarche de responsabilité environementale
+            </figcaption>
+        </figure>
+    </section>
+
+    <section class="size__container">
+        <h2>Différents modèles disponibles</h2>
         <div>
-            {% include '/home/describe_product.html.twig' %}
+            <img src="{{ asset ('/images/mirroir.jpg') }}" alt="">
+            <ul>
+                <li>Taille SM</li>
+                <li>Taille LG</li>
+                <li>Taille XL</li>
+            </ul>
         </div>
-        <div>
-            <img src="{{ asset("/images/outils.jpg")}}" alt="Différents outils visant à promouvoir l'handicap" />
+    </section>
+
+    <section class="testimonial__container">
+        <h2>Ce que les clients disent de nous</h2>
+        <div class="testimonial">
+            <h3>MONIN Jean-Baptiste</h3>
+            <p>Quel projet! Merci de vous intéressez aux personnes atteinte d'un handicap, votre vision est tellement louable que vous allez allé loin.</p>
+            <div class="testimonial__carret-left">
+                <i class="fa-solid fa-angle-left" style="color: #ffffff;"></i>
+            </div>
+            <div class="testimonial__carret-right">
+                <i class="fa-solid fa-angle-right" style="color: #ffffff;"></i>
+            </div>
         </div>
-    <section>
+    </section>
 {% endblock main %}

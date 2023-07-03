@@ -1,21 +1,242 @@
 /* main section.describe__content */
-.describe__content {
-    padding: 3%;
-    background-color: $white-color;
-    display: flex;
+.describe__container {
+    padding: 10% 10% 15%;
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.75fr 2.5fr 54px;
+    grid-template-areas:
+        'image'
+        'paragraphe'
+        'shop_btn';
     gap: 25px;
 
-    div {
-        &:first-child {
+    @include md {
+        grid-template-rows: 0.5fr 1fr 54px;
+    }
+    @include xl {
+        padding: 5% 10% 7.5%;
+        grid-template-rows: 0.25fr 1fr 54px;
+    }
+
+    img {
+        grid-area: image;
+        width: 100%;
+        @include md {
+            width: 80%;
+            margin: 0 auto;
+        }
+        @include xl {
             width: 60%;
-            letter-spacing: 1.6px;
-            white-space: pre-line;
-            padding: 0 50px;
         }
-        &:last-child {
-            width: 40%;
-            height: fit-content;
-            background-color: red;
+    }
+    p {
+        padding: 10% 0 5%;
+        grid-area: paragraphe;
+        letter-spacing: 1.6px;
+        white-space: pre-line;
+        text-align: justify;
+
+        @include md {
+            text-align: justify;
+            padding: 5%;
+            columns: 2 auto;
+            gap: 50px;
         }
+        @include xl {
+            padding: 5%;
+            columns: 3 auto;
+            gap: 50px;
+        }
+    }
+    a {
+        grid-area: shop_btn;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5%;
+        @include md {
+            font-size: 20px;
+        }
+        @include md {
+            margin-bottom: 10%;
+        }
+    }
+}
+
+.greenIt__container {
+    background-color: $secondary-color;
+    padding: 5%;
+    @include md {
+        padding: 2.5%;
+    }
+    figure {
+        padding: 10%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include md {
+            padding: 5%;
+        }
+        @include xl {
+            padding: 2.5%;
+        }
+        div {
+            padding: 20px;
+            background-color: $white-color;
+            margin-bottom: 5%;
+            border-radius: 50%;
+            width: 60%;
+            @include md {
+                width: 30%;
+            }
+            @include xl {
+                padding: 10px;
+                margin-bottom: 2.5%;
+                width: 15%;
+            }
+        }
+        img {
+            border-radius: 50%;
+            width: 100%;
+        }
+        figcaption {
+            color: $creame-color;
+            padding: 8px 16px;
+            text-align: center;
+        }
+    }
+}
+
+.size__container {
+    background-color: $primary-color;
+    width: 100%;
+    padding: 10%;
+    @include md {
+        div {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas:
+                'image .'
+                'image list';
+            gap: 50px;
+        }
+    }
+    @include xl {
+        padding: 5% 20%;
+    }
+    h2 {
+        color: $creame-color;
+        text-align: center;
+        @include md {
+            grid-area: title;
+        }
+    }
+    img {
+        width: 100%;
+        margin: 10% 0;
+        @include md {
+            grid-area: image;
+        }
+    }
+    ul {
+        @include md {
+            grid-area: list;
+            margin-top: -140px;
+        }
+        li {
+            background-color: $creame-color;
+            height: 40px;
+            width: 100%;
+            margin-bottom: 2%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include md {
+                margin-bottom: 20%;
+            }
+        }
+    }
+}
+
+.testimonial__container {
+    padding: 10% 5%;
+    @include md {
+        padding: 5%;
+    }
+    @include md {
+        padding: 5% 20%;
+    }
+    h2 {
+        color: $primary-color;
+        text-align: center;
+        margin-bottom: 10%;
+        @include md {
+            margin-bottom: 5%;
+        }
+    }
+}
+
+.testimonial {
+    background-color: $secondary-color;
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    h3 {
+        color: $white-color;
+    }
+    p {
+        text-align: center;
+        font-style: italic;
+        padding: 5%;
+        color: $creame-color;
+    }
+}
+
+.testimonial__carret-left {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    @include md {
+        width: 75px;
+    }
+    &:hover {
+        opacity: 0.2;
+        background-color: $primary-color;
+    }
+}
+
+.testimonial__carret-right {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    @include md {
+        width: 75px;
+    }
+    &:hover {
+        opacity: 0.2;
+        background-color: $primary-color;
     }
 }
