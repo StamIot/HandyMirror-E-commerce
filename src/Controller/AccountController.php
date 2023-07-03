@@ -32,6 +32,11 @@ class AccountController extends AbstractController
         // Choisissez aléatoirement une URL d'image de profil parmi le tableau
         $randomProfileImage = $profileImages[array_rand($profileImages)];
 
+        if ($this->getUser() && in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+            return $this->redirectToRoute('app_admin');
+        }
+
+
         return $this->render('account/index.html.twig', [
             'titleH1' => 'Mon Compte client',
             'profileImageUrl' => $randomProfileImage,
