@@ -44,13 +44,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Address $address = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
-    private Collection $orders;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Command::class)]
+    private Collection $commands;
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
+        $this->commands = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -187,32 +188,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Order>
+     * @return Collection<int, Command>
      */
-    public function getOrders(): Collection
+    public function getCommands(): Collection
     {
-        return $this->orders;
+        return $this->commands;
     }
 
-    public function addOrder(Order $order): static
+    public function addCommand(Command $command): static
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
-            $order->setUser($this);
+        if (!$this->commands->contains($command)) {
+            $this->commands->add($command);
+            $command->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeOrder(Order $order): static
+    public function removeCommand(Command $command): static
     {
-        if ($this->orders->removeElement($order)) {
+        if ($this->commands->removeElement($command)) {
             // set the owning side to null (unless already changed)
-            if ($order->getUser() === $this) {
-                $order->setUser(null);
+            if ($command->getUser() === $this) {
+                $command->setUser(null);
             }
         }
 
         return $this;
     }
+
+    
 }

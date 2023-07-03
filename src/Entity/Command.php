@@ -2,12 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\OrderRepository;
+use App\Repository\CommandRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: OrderRepository::class)]
-#[ORM\Table(name: '`order`')]
-class Order
+#[ORM\Entity(repositoryClass: CommandRepository::class)]
+class Command
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,12 +17,12 @@ class Order
     private ?string $code = null;
 
     #[ORM\Column]
-    private ?int $totalPrice = null;
+    private ?float $totalPrice = null;
 
     #[ORM\Column]
-    private ?int $deliveryTax = null;
+    private ?float $deliveryTax = null;
 
-    #[ORM\ManyToOne(inversedBy: 'orders')]
+    #[ORM\ManyToOne(inversedBy: 'commands')]
     #[ORM\JoinColumn(nullable: false)]
     private ?user $user = null;
 
@@ -44,24 +43,24 @@ class Order
         return $this;
     }
 
-    public function getTotalPrice(): ?int
+    public function getTotalPrice(): ?float
     {
         return $this->totalPrice;
     }
 
-    public function setTotalPrice(int $totalPrice): static
+    public function setTotalPrice(float $totalPrice): static
     {
         $this->totalPrice = $totalPrice;
 
         return $this;
     }
 
-    public function getDeliveryTax(): ?int
+    public function getDeliveryTax(): ?float
     {
         return $this->deliveryTax;
     }
 
-    public function setDeliveryTax(int $deliveryTax): static
+    public function setDeliveryTax(float $deliveryTax): static
     {
         $this->deliveryTax = $deliveryTax;
 
