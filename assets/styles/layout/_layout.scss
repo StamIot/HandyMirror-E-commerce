@@ -1,3 +1,7 @@
+html {
+    background-color: $primary-color;
+}
+
 body {
     min-height: 100vh;
     display: flex;
@@ -7,6 +11,38 @@ body {
     @include xl {
         max-width: 1200px;
         margin: 0 auto;
+    }
+}
+
+.bigTitle {
+    display: none;
+    &__left {
+        @include xxl {
+            content: '';
+            display: block;
+            position: fixed;
+            left: -230px;
+            top: 300px;
+            font-size: 12vmin;
+            color: $creame-color;
+            transform: rotate(-90deg);
+            opacity: 0.2;
+            text-shadow: 2px solid $black-color;
+        }
+    }
+    &__right {
+        @include xxl {
+            content: '';
+            display: block;
+            position: fixed;
+            right: -230px;
+            top: 300px;
+            font-size: 12vmin;
+            color: $creame-color;
+            transform: rotate(90deg);
+            opacity: 0.2;
+            text-shadow: 2px solid $black-color;
+        }
     }
 }
 
