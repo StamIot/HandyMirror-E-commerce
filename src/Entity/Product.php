@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
@@ -30,6 +32,14 @@ class Product
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $category = null;
+
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: CommandItems::class)]
+    private Collection $commandItems;
+
+    public function __construct()
+    {
+        $this->commandItems = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +114,36 @@ class Product
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CommandItems>
+     */
+    public function getCommandItems(): Collection
+    {
+        return $this->commandItems;
+    }
+
+    public function addCommandItem(CommandItems $commandItem): static
+    {
+        if (!$this->commandItems->contains($commandItem)) {
+            $this->commandItems->add($commandItem);
+            $commandItem->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandItem(CommandItems $commandItem): static
+    {
+        if ($this->commandItems->removeElement($commandItem)) {
+            // set the owning side to null (unless already changed)
+            if ($commandItem->getProduct() === $this) {
+                $commandItem->setProduct(null);
+            }
+        }
 
         return $this;
     }
