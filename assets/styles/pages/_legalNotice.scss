@@ -1,0 +1,55 @@
+.legalNotites__container {
+    padding: 5%;
+    width: 90%;
+    margin: 0 auto;
+
+    @include sm {
+        width: 80%;
+    }
+    @include md {
+        width: 70%;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        font-size: 18px;
+        color: $primary-color;
+        text-decoration: underline;
+        margin-bottom: 2.5%;
+    }
+
+    ul {
+        margin-bottom: 5%;
+        @include sm {
+            margin-bottom: 4%;
+        }
+        @include sm {
+            margin-bottom: 3%;
+        }
+        li {
+            strong {
+                color: $primary-color;
+            }
+            span {
+                color: $secondary-color;
+                font-style: italic;
+            }
+        }
+    }
+
+    p {
+        margin: 5% 0 10%;
+        letter-spacing: 1.6px;
+        @include sm {
+            margin: 4% 0 6%;
+        }
+        @include md {
+            margin: 4% 0;
+        }
+    }
+}
+
+.legalNotites__info {
+    color: $gray-color !important;
+    font-style: italic;
+}

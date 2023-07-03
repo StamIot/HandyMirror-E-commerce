@@ -3,20 +3,37 @@
 {% block title %}Mentions Légales{% endblock %}
 
 {% block main %}
-    <div class="titlePage">
-        <h1>{{ titlePage | upper }}</h1>
+    <div class="title__container">
+        <h1>{{ titleH1 | upper }}</h1>
     </div>
 
-    <section>
-        <mark>Projet d'école pour l'obtention d'une soutenance</mark>
+    <section class="legalNotites__container">
+        <div class="alert alert-info">
+            Projet d'école pour l'obtention de notre soutenance
+        </div>
     
         <h2>1 - Informations générales</h2>
         <ul>
-            <li>Nom de l'entreprise : <strong>STAMIOT</strong></li>
-            <li>Adresse : <strong>78 Route de Paris, 69260 à Charbonnière les bains</strong></li>
-            <li>Téléphone : <strong>04.69.69.69.69</strong></li>
-            <li>E-mail : <strong>contact@handy-mirror.com</strong></li>
-            <li>Numéro d'identification : <strong>XXXXXXXXX</strong></li>
+            <li>
+                <strong>Nom de l'entreprise :</strong>
+                <span>STAMIOT</span>
+            </li>
+            <li>
+                <strong>Adresse :</strong>
+                <span>78 Route de Paris, 69260 à Charbonnière les bains</span>
+            </li>
+            <li>
+                <strong>Téléphone :</strong>
+                <span>04.69.69.69.69</span>
+            </li>
+            <li>
+                <strong>E-mail :</strong>
+                <span>contact@handy-mirror.com</span>
+            </li>
+            <li>
+                <strong>Numéro d'identification :</strong>
+                <span>XXXXXXXXX</span>
+            </li>
         </ul>
 
         <h2>2 - Propriété intellectuelle</h2>
@@ -91,7 +108,7 @@
         <hr>
         <br>
 
-        <p>
+        <p class="legalNotites__info">
             Ces mentions légales sont soumises à la législation en vigueur et aux tribunaux compétents de <strong>France</strong>.
         </p>
 

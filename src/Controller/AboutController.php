@@ -12,7 +12,7 @@ class AboutController extends AbstractController // controller de la page A prop
     public function index(): Response
     {
         return $this->render('about/index.html.twig', [
-            'titlePage' => 'A propos de l\'équipe',
+            'titleH1' => 'A propos de l\'équipe',
         ]);
     }
 }

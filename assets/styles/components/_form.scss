@@ -1,0 +1,128 @@
+.form__container {
+    margin: 5%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // background-color: $creame-color;
+    // box-shadow: $box-shadow;
+
+    @include sm {
+        margin: 5% 10%;
+    }
+    @include md {
+        margin: 5% 15%;
+    }
+    @include lg {
+        margin: 5% 20%;
+    }
+    @include xl {
+        margin: 5% 25%;
+    }
+    @include xxl {
+        margin: 5% 30%;
+    }
+}
+
+.form-group {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 5%;
+}
+
+.form-control {
+    margin-top: 5%;
+    div {
+        font-style: italic;
+        color: $gray-color;
+    }
+    input {
+        margin-top: 1%;
+    }
+}
+
+form {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    color: black-color-dark;
+    font-size: 16px;
+    font-family: Inter;
+    letter-spacing: 3.5px;
+}
+
+input {
+    margin: 1% 0;
+    width: 100%;
+    height: 40px;
+    border: 2px solid $primary-color;
+    color: $black-color;
+    padding: 0 16px;
+    font-size: 16px;
+    &:focus {
+        border: 2px solid $secondary-color;
+    }
+    &[type='checkbox'] {
+        height: 20px;
+        cursor: pointer;
+    }
+}
+
+.checkbox {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: baseline;
+    width: 100%;
+    input[type='checkbox'] {
+        width: 10%;
+    }
+    label {
+        cursor: pointer;
+        letter-spacing: 3.5px;
+    }
+}
+
+::placeholder {
+    color: $gray-color;
+    text-align: center;
+    font-size: 16px;
+    font-family: Inter;
+    letter-spacing: 3.5px;
+}
+
+.btn {
+    cursor: pointer;
+    margin: 5% auto;
+    width: 80%;
+    max-width: 300px;
+    height: 54px;
+    box-shadow: $box-shadow;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 2.8vmin;
+    font-family: Inter;
+    font-weight: bold;
+    letter-spacing: 4px;
+    transition: opacity 0.4s ease-in-out;
+    text-transform: uppercase;
+    &-primary {
+        background: $primary-color;
+        color: $white-color;
+    }
+    &:hover {
+        opacity: 0.8;
+    }
+}

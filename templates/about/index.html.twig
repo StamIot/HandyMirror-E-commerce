@@ -3,82 +3,69 @@
 {% block title %}A propos de l'équipe{% endblock %}
 
 {% block main %}
-    <div class="titlePage">
-        <h1>{{ titlePage | upper }}</h1>
+    <div class="title__container">
+        <h1>{{ titleH1 | upper }}</h1>
     </div>
-    <section>
+    <section class="about__container">
 
         <!-- Carte n°1 -->
         <div class="card"> 
             <div class="card__header">
-                <img src="" alt="font d'écran de la carte" />
+                <h2>Alain GUILLON</h2>
+                <h3>Scrum Master</h3>
+                <img src="{{ asset("/images/team/alain.jpeg") }}" alt="photo de profile d'Alain" />
             </div>
             <div class="card__body">
-                <img src="{{asset ("/images/team/alain.jpeg")}}" alt="photo de profile" />
-                <h3>Alain GUILLON - <small>Développeur Fullstack</small></h3>
-                <p>Passionné par le développement informatique, j'ai commencé par travailler en tant que technicien de maintenance, ce qui m'a permis d'acquérir une solide compréhension des systèmes et des infrastructures informatiques. En tant que technicien de maintenance, j'étais responsable de la gestion, de la maintenance et du dépannage des équipements matériels et logiciels.
-
-                    Au fil de mon parcours, j'ai développé un intérêt particulier pour la programmation web et j'ai décidé de me concentrer sur le langage PHP. Grâce à mes connaissances techniques et à mon expérience en maintenance, j'ai rapidement acquis une compréhension approfondie de PHP et de ses fonctionnalités.<p>
+                <p>Passionné par le développement informatique, j'ai commencé par travailler en tant que technicien de maintenance, ce qui m'a permis d'acquérir une solide compréhension des systèmes et des infrastructures informatiques. En tant que technicien de maintenance, j'étais responsable de la gestion, de la maintenance et du dépannage des équipements matériels et logiciels.</p>
+                <p>Au fil de mon parcours, j'ai développé un intérêt particulier pour la programmation web et j'ai décidé de me concentrer sur divers langages informatique. Grâce à mon ambition d'en savoir toujours plus, et à mon expérience passé, j'ai rapidement acquis une compréhension approfondie sur beaucoup d'entres-elles.</p>
             </div>
             
             <div class="card__footer">
-                <span>Rôle: <strong>Product Owner</strong></span>
-                <span><a href="https://www.linkedin.com/in/alainguillon/" ><img src="{{asset ("images/linkedin/linkedin.png")}}" alt="linkedin" /></a></span>
+                <a href="https://www.linkedin.com/in/alainguillon/" ><img src="{{asset ("images/linkedin/linkedin.png")}}" alt="linkedin" /></a>
             </div>
         </div><!-- End Carte n°1 -->
-        
-        <br/>
 
         <!-- Carte n°2 -->
         <div class="card">
             <div class="card__header">
-                <img src="{{asset ("images/team/sophie.jpeg")}}" alt="font d'écran de la carte" />
+                <h2>Sophie MAJOREL</h2>
+                <h3>Scrum Master</h3>
+                <img src="{{ asset("/images/team/sophie.jpeg") }}" alt="photo de profile de Sophie" />
             </div>
             <div class="card__body">
-                <img src="" alt="photo de profile" />
-                <h3>MAJOREL Sophie - <small>Développeuse Fullstack</small></h3>
-                
                 <p>En tant que développeuse, je m'implique profondément dans chaque projet que j'entreprends. J'accorde une grande importance à fournir un travail de qualité et à atteindre les objectifs fixés. Lorsque j'ai découvert ce projet, j'ai été particulièrement touchée par son objectif et son impact potentiel sur les personnes atteintes de TDAH. La perspective d'utiliser mes compétences en développement web pour contribuer à cette cause a suscité en moi un fort sentiment d'engagement.</p>
             </div>
             <div class="card__footer">
-                <span>Rôle: <strong>Scrum Master</strong></span>
-                <span><a href="https://www.linkedin.com/in/sophie-majorel-a14928173/" ><img src="{{asset ("images/linkedin/linkedin.png")}}" alt="linkedin" /></a></span>
+                <a href="https://www.linkedin.com/in/sophie-majorel-a14928173/" ><img src="{{asset ("images/linkedin/linkedin.png")}}" alt="linkedin" /></a>
             </div>
         </div><!-- End Carte n°2 -->
-
-        <br/>
 
         <!-- Carte n°3 -->
         <div class="card">
             <div class="card__header">
-                <img src="" alt="font d'écran de la carte" />
+                <h2>Tarek TAGUINE</h2>
+                <h3>Scrum Master</h3>
+                <img src="{{ asset("/images/team/tarek.jpeg") }}" alt="photo de profile de Tarek" />
             </div>
             <div class="card__body">
-                <img src="{{asset ("images/team/tarek.jpeg")}}" alt="photo de profile" />
-                <h3>TAGUINE Tarek - <small>Développeur Fullstack</small></h3>
                 <p>En tant que développeur Fullstack, ma passion pour les nouvelles technologies est inébranlable. J'éprouve une véritable fascination pour les dernières avancées technologiques et je suis constamment avide d'apprendre et de me tenir au courant des tendances émergentes.</p>
             </div>
             <div class="card__footer">
-                <span>Rôle: <strong>Scrum Master</strong></span>
-                <span><a href="https://www.linkedin.com/in/tarek-nordine-taguine/" ><img src="{{asset ("images/linkedin/linkedin.png")}}" alt="linkedin" /></a></span>
+                <a href="https://www.linkedin.com/in/tarek-nordine-taguine/" ><img src="{{asset ("images/linkedin/linkedin.png")}}" alt="linkedin" /></a>
             </div>
         </div><!-- End Carte n°3 -->
-
-        <br/>
 
         <!-- Carte n°4 -->
         <div class="card">
             <div class="card__header">
-                <img src="" alt="font d'écran de la carte" />
+                <h2>Zeinab ABOUKHEIR</h2>
+                <h3>Product Owner</h3>
+                <img src="{{ asset("/images/team/zeinab.jpeg") }}" alt="photo de profile de Zeinab" />
             </div>
             <div class="card__body">
-                <img src="{{asset ("/images/team/zeinab.jpeg")}}" alt="photo de profile" />
-                <h3>ABOUKHEIR Zeinab - <small>Développeur Fullstack</small></h3>
                 <p>En tant que développeuse, mon implication dans les projets que j'entreprends est profonde et engagée. Je me consacre pleinement à chaque défi, en mettant toute mon énergie et ma passion pour créer des solutions de haute qualité. Lorsque j'ai découvert ce projet, j'ai immédiatement ressenti une grande sensibilité à sa cause et à son objectif. L'idée d'aider les personnes touchées par le TDAH a résonné en moi de manière significative.</p>
             </div>
-            <div class="card__footer">
-                <span>Rôle: <strong>Scrum Master</strong></span>
-                <span><a href="https://www.linkedin.com/in/zeinab-aboukheir/" ><img src="{{asset ("images/linkedin/linkedin.png")}}" alt="linkedin" /></a></span>
+            <div class="card__footer"><a href="https://www.linkedin.com/in/zeinab-aboukheir/" ><img src="{{asset ("images/linkedin/linkedin.png")}}" alt="linkedin" /></a>
             </div>
         </div><!-- End Carte n°4 -->
     </section>

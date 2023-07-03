@@ -9,9 +9,9 @@
 @import 'base/typography';
 
 //layout
+@import 'layout/layout';
 @import 'layout/header';
 @import 'layout/grid';
-@import 'layout/layout';
 @import 'layout/footer';
 
 //components
@@ -32,4 +32,5 @@
 @import 'pages/legalNotice';
 @import 'pages/contact';
 @import 'pages/about';
-@import 'pages/reset_password'
+@import 'pages/reset_password';
+@import 'pages/checkEmail';

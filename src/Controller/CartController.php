@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LegalNotitesController extends AbstractController
+class CartController extends AbstractController
 {
-    #[Route('/legal-notites', name: 'app_legal_notites')]
+    #[Route('/cart', name: 'app_cart')]
     public function index(): Response
     {
-        return $this->render('legal_notites/index.html.twig', [
-            'titleH1' => 'Mentions Légales',
+        return $this->render('cart/index.html.twig', [
+            'titleH1' => 'Votre panier',
         ]);
     }
 }

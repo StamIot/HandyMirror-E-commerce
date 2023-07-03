@@ -2,10 +2,36 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: $creame-color;
+    background-color: $white-color;
     color: $black-color;
+    @include xl {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 }
 
 main {
     flex: 1;
+    max-width: 100%;
+    .title {
+        &__container {
+            background-color: $primary-color;
+            padding: 60px 0;
+            /* main div.titleContainer h1 */
+            h1 {
+                color: $creame-color;
+                font-size: 3.8vmin;
+                text-align: center;
+                text-shadow: 2px 2px $black-color;
+            }
+        }
+        &__message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.8vmin;
+            letter-spacing: 4px;
+            color: $gray-color;
+            padding: 0 5%;
+        }
+    }
 }
