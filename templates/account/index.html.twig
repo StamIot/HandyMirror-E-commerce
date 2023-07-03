@@ -8,6 +8,25 @@
         <p class="lead">N° du compte client ici non ?</p>
     </div>
     <section>
-        Le code du compte client ici
+    <div class="space"/>
+        <div class="client_container">
+            <div class="user-profile">
+            <img class="profile-image" src="{{ profileImageUrl }}" alt="Profile Image">
+                <div class="user-info">
+                <p class="info">{{ firstName }}</p>
+                <p class="info">{{ lastName }}</p>
+                <p class="info">{{ email }}</p>
+                </div>
+            </div>
+            <button class="btnmodif btn-primary" type="submit">
+               Modifier
+            </button>
+            <div class="space"/>
+        </div>
+    </section>
+    <section>
+    <p class="orderbutton"> Mes commandes <p>
+    <div class="line" />
+        <p class="commandinfo">{{ command }}</p>
     </section>
 {% endblock %}

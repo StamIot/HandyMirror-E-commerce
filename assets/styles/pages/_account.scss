@@ -1,0 +1,109 @@
+.client_container {
+    background-color: #EFEAD8;
+    margin: 0 auto;
+    width: 50%;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  
+    @media screen and (max-width: 768px) {
+      width: 80%;
+    }
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+  
+    .profile-image {
+      width: 30%; // Largeur souhaitée pour l'icône
+      height: 30%; // Hauteur souhaitée pour l'icône
+      margin: 40px 40px 40px 40px;
+  
+      @media screen and (max-width: 768px) {
+        width: 50%;
+        height: auto;
+      }
+    }
+  
+    .user-info {
+      display: flex;
+      flex-direction: column; // Afficher les éléments en colonne
+      align-items: flex-start; // Aligner les éléments à droite
+  
+      .info {
+        margin-bottom: 20px; // Espacement entre le prénom et le nom
+        color: #000;
+        text-align: center;
+        font-size: 20px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+  
+        @media screen and (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  
+  .btnmodif {
+    cursor: pointer;
+    margin: 0 auto;
+    width: auto;
+    height: 40px;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: $box-shadow;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    font-size: 2vmin;
+    font-family: Inter;
+    font-weight: bold;
+    letter-spacing: 4px;
+    transition: opacity 0.4s ease-in-out;
+    text-transform: uppercase;
+  
+    @media screen and (max-width: 768px) {
+      font-size: 2.4vmin;
+      text-align: center;
+    }
+  
+    &-primary {
+      background: $primary-color;
+      color: $white-color;
+    }
+  
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  
+  .space {
+    padding: 5%;
+  
+    @media screen and (max-width: 768px) {
+      padding: 2%;
+    }
+  }
+  
+  .line{
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    margin-bottom: 150px;
+  }
+
+.orderbutton{
+    display: flex;
+    width: 10%;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px;
+    border-color: #000;
+    border-style: solid;
+}
+
+.commandinfo{
+    text-align: center;
+}
