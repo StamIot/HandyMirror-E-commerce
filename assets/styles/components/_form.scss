@@ -40,7 +40,11 @@
     div {
         font-style: italic;
         color: $gray-color;
+        &.invalid-feedback {
+            color: lightcoral;
+        }
     }
+
     input {
         margin-top: 1%;
     }
