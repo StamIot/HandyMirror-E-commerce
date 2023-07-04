@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Address;
 use App\Entity\Category;
 use App\Entity\Command;
 use App\Entity\User;
@@ -52,6 +53,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::section('Clients'),
             MenuItem::linkToCrud('Client', 'fas fa-user', User::class),
             MenuItem::linkToCrud('Commande', 'fa-solid fa-briefcase', Command::class),
+            MenuItem::linkToCrud("Adresse", 'fa-solid fa-address-card', Address::class),
 
             MenuItem::section('Produits'),
             MenuItem::linkToCrud('Catégorie', "fa-solid fa-list", Category::class),
