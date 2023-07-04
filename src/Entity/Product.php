@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Entity\Review;
 use App\Entity\Category;
 use App\Entity\CommandItems;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\Collection;
@@ -22,18 +23,25 @@ class Product
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
+    private ?string $subtitle = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
+
+    #[ORM\Column]
+    private ?int $price = null;
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column]
-    private ?float $price = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $size = null;
+    #[ORM\Column(nullable: true)]
+    private ?int $quantity = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: CommandItems::class)]
@@ -68,6 +76,30 @@ class Product
         return $this;
     }
 
+    public function getSubtitle(): ?string
+    {
+        return $this->subtitle;
+    }
+
+    public function setSubtitle(string $subtitle): static
+    {
+        $this->subtitle = $subtitle;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -92,26 +124,38 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getThumbnail(): ?string
     {
-        return $this->price;
+        return $this->thumbnail;
     }
 
-    public function setPrice(float $price): static
+    public function setThumbnail(string $thumbnail): static
     {
-        $this->price = $price;
+        $this->thumbnail = $thumbnail;
 
         return $this;
     }
 
-    public function getSize(): ?string
+    public function getQuantity(): ?int
     {
-        return $this->size;
+        return $this->quantity;
     }
 
-    public function setSize(?string $size): static
+    public function setQuantity(?int $quantity): static
     {
-        $this->size = $size;
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }
@@ -184,18 +228,6 @@ class Product
                 $review->setProduct(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getThumbnail(): ?string
-    {
-        return $this->thumbnail;
-    }
-
-    public function setThumbnail(string $thumbnail): static
-    {
-        $this->thumbnail = $thumbnail;
 
         return $this;
     }
