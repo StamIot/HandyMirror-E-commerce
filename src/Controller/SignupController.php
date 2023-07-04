@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use Ramsey\Uuid\Uuid;
 use App\Form\SignupType;
 use App\Service\HandyLogs;
 use Doctrine\ORM\EntityManagerInterface;
@@ -89,6 +90,10 @@ class SignupController extends AbstractController
             // Tout est OK ici, hash du mot de passe
             $hashedPassword = $this->passwordHasher->hashPassword($user, $form->get('password')->getData());
             $user->setPassword($hashedPassword);
+
+             // Générer un numéro de compte unique
+             $accountNumber = Uuid::uuid4()->toString();
+             $user->setAccountNumber($accountNumber);
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
