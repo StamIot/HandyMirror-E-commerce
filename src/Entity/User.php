@@ -43,7 +43,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $accountNumber = null;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
+   /**
+    * @ORM\ManyToOne(targetEntity="App\Entity\Address", inversedBy="users", cascade={"persist"})
+    * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
+    */
     private ?Address $address = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Command::class)]
