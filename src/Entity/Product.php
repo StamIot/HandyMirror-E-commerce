@@ -42,6 +42,9 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Review::class)]
     private Collection $reviews;
 
+    #[ORM\Column(length: 255)]
+    private ?string $thumbnail = null;
+
     public function __construct()
     {
         $this->commandItems = new ArrayCollection();
@@ -181,6 +184,18 @@ class Product
                 $review->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail(string $thumbnail): static
+    {
+        $this->thumbnail = $thumbnail;
 
         return $this;
     }
