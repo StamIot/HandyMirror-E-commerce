@@ -15,8 +15,8 @@ body {
 }
 
 .bigTitle {
-    display: none;
     &__left {
+        display: none;
         @include xxl {
             content: '';
             display: block;
@@ -31,6 +31,7 @@ body {
         }
     }
     &__right {
+        display: none;
         @include xxl {
             content: '';
             display: block;
