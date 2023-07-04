@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Command;
 use App\Entity\Product;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CommandItemsRepository;
@@ -23,7 +24,7 @@ class CommandItems
 
     #[ORM\ManyToOne(inversedBy: 'commandItems')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?command $command = null;
+    private ?Command $command = null;
 
     public function getId(): ?int
     {
@@ -54,12 +55,12 @@ class CommandItems
         return $this;
     }
 
-    public function getCommand(): ?command
+    public function getCommand(): ?Command
     {
         return $this->command;
     }
 
-    public function setCommand(?command $command): static
+    public function setCommand(?Command $command): static
     {
         $this->command = $command;
 
