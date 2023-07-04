@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\CommandItemsRepository;
+use App\Entity\Product;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommandItemsRepository;
 
 #[ORM\Entity(repositoryClass: CommandItemsRepository::class)]
 class CommandItems
@@ -18,7 +19,7 @@ class CommandItems
 
     #[ORM\ManyToOne(inversedBy: 'commandItems')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?product $product = null;
+    private ?Product $product = null;
 
     #[ORM\ManyToOne(inversedBy: 'commandItems')]
     #[ORM\JoinColumn(nullable: false)]
@@ -41,12 +42,12 @@ class CommandItems
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function setProduct(?product $product): static
+    public function setProduct(?Product $product): static
     {
         $this->product = $product;
 

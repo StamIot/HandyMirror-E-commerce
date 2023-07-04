@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ReviewRepository;
+use App\Entity\Product;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ReviewRepository;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 class Review
@@ -22,7 +23,7 @@ class Review
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?product $product = null;
+    private ?Product $product = null;
 
     public function getId(): ?int
     {
@@ -53,12 +54,12 @@ class Review
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function setProduct(?product $product): static
+    public function setProduct(?Product $product): static
     {
         $this->product = $product;
 
