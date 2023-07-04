@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\CommandRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
+use App\Entity\CommandItems;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommandRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: CommandRepository::class)]
 class Command
@@ -26,7 +28,7 @@ class Command
 
     #[ORM\ManyToOne(inversedBy: 'commands')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     #[ORM\OneToMany(mappedBy: 'command', targetEntity: CommandItems::class)]
     private Collection $commandItems;
@@ -77,12 +79,12 @@ class Command
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): static
+    public function setUser(?User $user): static
     {
         $this->user = $user;
 
