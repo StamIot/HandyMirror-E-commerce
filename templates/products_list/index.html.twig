@@ -7,20 +7,21 @@
         <h1>{{ titleH1 | upper }}</h1>
         <p class="title__message">Décrouvez vite nos produits</p>
     </div>
-    <section>
+    <section class="productsList__container">
         {% for product in products %}
-            <div class="product__container">
-                <div class="product__image">
-                    <img src="{{ product.image }}" alt="{{ product.title }}">
+                <div class="card__container">
+                    <span>{{ product.price }} €</span>
+                    <div class="card__body">
+                            <img src="{{ product.image }}" alt="{{ product.title }}">
+                        </a>
+                    </div>
+                    <div class="card__footer">
+                        <h2>{{ product.title }}</h2>
+                        <a href="/product/{{ product.id }}">
+                            Voir le produit
+                        </a>
+                    </div>
                 </div>
-                <div class="product__description">
-                    <h2>{{ product.title }}</h2>
-                    <p>{{ product.description }}</p>
-                    <p>{{ product.price }} €</p>
-                    <a href="/product/{{ product.id }}">Voir le produit</a>
-                </div>
-            </div>
         {% endfor %}
-
     </section>
 {% endblock %}
