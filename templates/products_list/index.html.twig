@@ -10,7 +10,7 @@
     <section class="productsList__container">
         {% for product in products %}
                 <div class="card__container">
-                    <span>{{ product.price }} €</span>
+                    <span>{{ (product.price / 100) |number_format(2, ',', '.') }} €</span>
                     <div class="card__body">
                             <img src="{{ asset ('images/thumbnails/') }}{{ product.thumbnail }}" alt="{{ product.title }}">
                         </a>

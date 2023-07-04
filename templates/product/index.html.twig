@@ -2,11 +2,11 @@
 
 {% block main %}
 
-<img src="{{product.image}}" alt="image product">
+<img src="{{ asset ('images/thumbnails') }}/{{product.thumbnail}}" alt="image product">
 {{ product.title}}
 {{ product.description}}
 
-{{ product.price}} euros
+{{ (product.price / 100) |number_format(2, ',', '.') }} €
 
 
 {% endblock main %}
