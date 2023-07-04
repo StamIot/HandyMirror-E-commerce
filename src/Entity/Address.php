@@ -31,6 +31,12 @@ class Address
     #[ORM\OneToMany(mappedBy: 'address', targetEntity: User::class)]
     private Collection $users;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $complement_address = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $number = null;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -119,6 +125,30 @@ class Address
         return $this;
     }
 
+    public function getComplementAddress(): ?string
+    {
+        return $this->complement_address;
+    }
+
+    public function setComplementAddress(?string $complement_address): static
+    {
+        $this->complement_address = $complement_address;
+
+        return $this;
+    }
+
+    public function getNumber(): ?int
+    {
+        return $this->number;
+    }
+
+    public function setNumber(?int $number): static
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+  
     public function __toString()
     {
     return $this->street . ', ' . $this->city . ', ' . $this->country;
