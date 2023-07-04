@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Command;
 use App\Entity\User;
 use App\Entity\Product;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +50,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToUrl('Affichage des produits', 'fa-solid fa-arrow-right', '/products/list'),
 
             MenuItem::section('Clients'),
-            MenuItem::linkToCrud('User', 'fas fa-user', User::class),
+            MenuItem::linkToCrud('Client', 'fas fa-user', User::class),
+            MenuItem::linkToCrud('Commande', 'fa-solid fa-briefcase', Command::class),
 
             MenuItem::section('Produits'),
             MenuItem::linkToCrud('Catégorie', "fa-solid fa-list", Category::class),
