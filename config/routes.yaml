@@ -12,3 +12,4 @@ confirm_account:
 home:
     path: /
     controller: App\Controller\HomeController::index
+
