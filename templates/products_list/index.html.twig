@@ -8,6 +8,19 @@
         <p class="title__message">Décrouvez vite nos produits</p>
     </div>
     <section>
-        Liste des produits ici
+        {% for product in products %}
+            <div class="product__container">
+                <div class="product__image">
+                    <img src="{{ product.image }}" alt="{{ product.title }}">
+                </div>
+                <div class="product__description">
+                    <h2>{{ product.title }}</h2>
+                    <p>{{ product.description }}</p>
+                    <p>{{ product.price }} €</p>
+                    <a href="/product/{{ product.id }}">Voir le produit</a>
+                </div>
+            </div>
+        {% endfor %}
+
     </section>
 {% endblock %}
