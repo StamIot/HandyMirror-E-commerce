@@ -24,13 +24,21 @@ class ProductCrudController extends AbstractCrudController
         return [
             TextField::new('title'),
             TextField::new('subtitle'),
-            SlugField::new('slug')->setTargetFieldName('title'),
+            SlugField::new('slug')
+                ->setTargetFieldName('title'),
             TextEditorField::new('description'),
-            MoneyField::new('price')->setCurrency("EUR"),
+            MoneyField::new('price')
+                ->setCurrency("EUR"),
             IntegerField::new('quantity'),
             AssociationField::new('category'),
-            ImageField::new('thumbnail')->setUploadDir('\\public\\upload\\products\\thumbnails'),
-            ImageField::new('image')->setUploadedFileNamePattern('[year]/[month]/[day]/[slug]-[contenthash].[extension]')->setUploadDir('\\public\\upload\\products')
+            ImageField::new('thumbnail')
+                ->setBasePath('images//thumbnails/')
+                ->setUploadDir('public//images//thumbnails/')
+                ->setUploadedFileNamePattern('[contenthash].[extension]')
+                ->setRequired(true),
+            ImageField::new('image')
+                ->setUploadedFileNamePattern('[day]-[month]-[year]-[slug]-[contenthash].[extension]')
+                ->setUploadDir('//public//upload//products')
         ];
     }
 
