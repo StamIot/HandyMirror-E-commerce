@@ -12,12 +12,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProductController extends AbstractController
 {
-    #[Route('/product/{id}', name: 'app_product')]
-    public function index(Request $request, ProductRepository $productRepository): Response
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
     {
+        $this->entityManager = $entityManager;
+    }
+
+    #[Route('/product/{slug}', name: 'app_product')]
+    public function index($slug): Response
+    {
+        $productBySlug = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
+        // dd($productBySlug);
+
         return $this->render('product/index.html.twig', [
             'titleH1' => 'Produit',
-            'product' => $productRepository->find($request->get('id'))
+            'product' => $productBySlug
         ]);
     }
 }
