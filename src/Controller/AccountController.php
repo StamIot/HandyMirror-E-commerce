@@ -17,7 +17,7 @@ class AccountController extends AbstractController
         $firstName = $user->getFirstname();
         $lastName = $user->getLastname();
         $email = $user->getEmail();
-        $adress = "122 chemin du Paradis 69961";
+        $address = "122 chemin du Paradis 69961";
         $city  = "";
         
 
@@ -47,7 +47,7 @@ class AccountController extends AbstractController
             'lastName' => $lastName,
             'email' => $email,
             'command' => $command,
-            'adress' => $adress,
+            'address' => $address,
             'city' => $city,
         ]);
     }
