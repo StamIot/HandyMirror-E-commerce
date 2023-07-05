@@ -24,9 +24,11 @@
             <div class="space"/>
         </div>
     </section>
-    <section>
-    <p class="orderbutton"> Mes commandes <p>
-    <div class="line" />
-        <p class="commandinfo">{{ command }}</p>
+    <section class="order__command">
+        <p class="orderbutton"> Mes commandes </p>
+        <hr>
+        <div class="alert alert-info mt-0">
+            <p class="commandinfo">{{ command }}</p>    
+        </div>
     </section>
 {% endblock %}

@@ -19,7 +19,6 @@ class AccountController extends AbstractController
         $email = $user->getEmail();
         $address = "122 chemin du Paradis 69961";
         $city  = "";
-        
 
         // Définissez un tableau d'URLs d'images de profil
         $profileImages = [
