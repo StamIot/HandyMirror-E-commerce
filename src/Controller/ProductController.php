@@ -25,6 +25,10 @@ class ProductController extends AbstractController
         $productBySlug = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
         // dd($productBySlug);
 
+        if (!$productBySlug) {
+            return $this->redirectToRoute('app_products_list');
+        }
+
         return $this->render('product/index.html.twig', [
             'titleH1' => 'Produit',
             'product' => $productBySlug
