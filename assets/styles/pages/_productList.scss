@@ -2,7 +2,7 @@
     margin: 5% 5% 20%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: auto;
+    grid-template-rows: 100%;
     gap: 25px;
 
     @include sm {
@@ -43,6 +43,7 @@
         border-radius: 3px 3px 0 0;
         img {
             width: 100%;
+            height: 250px;
             background-position: center;
             background-size: cover;
         }
