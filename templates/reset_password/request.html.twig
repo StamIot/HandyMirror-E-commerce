@@ -3,15 +3,15 @@
 {% block title %}Reset your password{% endblock %}
 
 {% block main %}
-    {% for flash_error in app.flashes('reset_password_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>
         <p class="title__message">Vous avez perdu l’accès à votre compte ? Pas de panique<br>Vous pouvez le ré-initialiser via le formulaire ci-dessous<p>
     </div>
 
     <section class="form__container">
+        {% for flash_error in app.flashes('reset_password_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
         {{ form_start(requestForm, {'attr': {'class': 'labelForm'}}) }}
             <div class="form-container">
                 {{ form_row(requestForm.email, {'attr': {'class': '', 'placeholder': 'Votre mail de connexion...'}}) }}

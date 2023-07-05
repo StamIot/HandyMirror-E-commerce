@@ -27,6 +27,16 @@ nav {
                 i {
                     font-size: 24px;
                     color: $creame-color;
+                    margin-right: 0;
+                }
+                span {
+                    display: none;
+                    color: $creame-color;
+                    text-transform: uppercase;
+                    @include sm {
+                        display: inline-block;
+                        margin-left: 10px;
+                    }
                 }
             }
             &:hover {

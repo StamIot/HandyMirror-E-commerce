@@ -6,63 +6,63 @@
         <ul class="mr-25">
 
             {% if not is_granted ('ROLE_USER') and not is_granted ('ROLE_ADMIN')  %}
-            <li title="Nos produits">
-                <a href="{{ path('app_products_list') }}">
-                    <i class="fa-brands fa-shopify"></i>
-                </a>
-            </li>
-            <li title="S'inscrire">
-                <a href="{{ path('app_signup') }}">
-                    <i class="fa-solid fa-user-plus"></i>
-                </a>
-            </li>
-            <li title="Se connecter">
-                <a href="{{ path('app_login') }}">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                </a>
-            </li> 
+                <li title="Nos produits">
+                    <a href="{{ path('app_products_list') }}">
+                        <i class="fa-brands fa-shopify"></i> <span>Boutique</span>
+                    </a>
+                </li>
+                <li title="S'inscrire">
+                    <a href="{{ path('app_signup') }}">
+                        <i class="fa-solid fa-user-plus"></i> <span>S'inscrire</span>
+                    </a>
+                </li>
+                <li title="Se connecter">
+                    <a href="{{ path('app_login') }}">
+                        <i class="fa-solid fa-right-to-bracket"></i> <span>Connexion</span>
+                    </a>
+                </li> 
             {% endif %}
 
             {% if is_granted ('ROLE_USER') and not is_granted ("ROLE_ADMIN")  %}
-            <li title="Nos produits">
-                <a href="{{ path('app_products_list') }}">
-                    <i class="fa-brands fa-shopify"></i>
-                </a>
-            </li>
-            <li title="Panier">
-                <a href={{ path('app_cart') }}>
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </a>
-            </li>
-            <li title="Mon compte">
-                <a href={{ path('app_account') }}>
-                    <i class="fa-solid fa-user"></i>
-                </a>
-            </li>
-            <li title="Se déconnecter">
-                <a href="{{ path('app_logout') }}">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </a>
-            </li>
+                <li title="Nos produits">
+                    <a href="{{ path('app_products_list') }}">
+                        <i class="fa-brands fa-shopify"></i> <span>Boutique</span>
+                    </a>
+                </li>
+                <li title="Panier">
+                    <a href={{ path('app_cart') }}>
+                        <i class="fa-solid fa-cart-shopping"></i> <span>Panier</span>
+                    </a>
+                </li>
+                <li title="Mon compte">
+                    <a href={{ path('app_account') }}>
+                        <i class="fa-solid fa-user"></i> <span>Mon compte</span>
+                    </a>
+                </li>
+                <li title="Se déconnecter">
+                    <a href="{{ path('app_logout') }}">
+                        <i class="fa-solid fa-right-from-bracket"></i> <span>Se déconnecter</span>
+                    </a>
+                </li>
             {% endif %}
             
 
             {% if is_granted ('ROLE_ADMIN') %}
-            <li title="Nos produits">
-                <a href="{{ path('app_products_list') }}">
-                    <i class="fa-brands fa-shopify"></i>
-                </a>
-            </li>
-            <li title="Panel Admin">
-                <a href="{{ path('app_admin') }}">
-                    <i class="fa-solid fa-laptop-code"></i>
-                </a>
-            </li>
-            <li title="Se déconnecter">
-                <a href="{{ path('app_logout') }}">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </a>
-            </li>
+                <li title="Nos produits">
+                    <a href="{{ path('app_products_list') }}">
+                        <i class="fa-brands fa-shopify"></i> <span>Boutique</span>
+                    </a>
+                </li>
+                <li title="Panel Admin">
+                    <a href="{{ path('app_admin') }}">
+                        <i class="fa-solid fa-laptop-code"></i> <span>Panel Admin</span>
+                    </a>
+                </li>
+                <li title="Se déconnecter">
+                    <a href="{{ path('app_logout') }}">
+                        <i class="fa-solid fa-right-from-bracket"></i> <span>se déconnecter</span>
+                    </a>
+                </li>
             {% endif %}
         </ul>
     </nav>
