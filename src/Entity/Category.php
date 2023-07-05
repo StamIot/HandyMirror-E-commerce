@@ -27,6 +27,11 @@ class Category
         $this->products = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,22 +57,22 @@ class Category
         return $this->products;
     }
 
-    public function addProduct(Product $product): static
+    public function addProduct(Product $products): static
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-            $product->setCategory($this);
+        if (!$this->products->contains($products)) {
+            $this->products->add($products);
+            $products->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeProduct(Product $product): static
+    public function removeProduct(Product $products): static
     {
-        if ($this->products->removeElement($product)) {
+        if ($this->products->removeElement($products)) {
             // set the owning side to null (unless already changed)
-            if ($product->getCategory() === $this) {
-                $product->setCategory(null);
+            if ($products->getCategory() === $this) {
+                $products->setCategory(null);
             }
         }
 
