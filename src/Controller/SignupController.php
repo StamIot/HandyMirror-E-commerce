@@ -110,14 +110,7 @@ class SignupController extends AbstractController
                 ->timeOut("5000")
                 ->preventDuplicates(true)
                 ->tapToDismiss(true)
-                ->addSuccess("<strong style='color: white;'>" . $user->getFirstname() . "</strong>, la création de ton compte a bien été effectuée.");
-
-            toastr()
-                ->positionClass('toast-top-full-width')
-                ->timeOut("5000")
-                ->preventDuplicates(true)
-                ->tapToDismiss(true)
-                ->addInfo("<strong style='color: white;'>" . $user->getFirstname() . "</strong>, tu peux te connecter maintenant.");
+                ->addSuccess("<strong style='color: white;'>" . $user->getFirstname() . "</strong>, la création de ton compte a bien été effectuée, tu peux maintenant te connecter.");
 
             return $this->redirectToRoute('app_login');
         }
