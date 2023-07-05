@@ -21,7 +21,6 @@ class UserChangeController extends AbstractController
         $form->handleRequest($request);
     
         if ($form->isSubmitted() && $form->isValid()) {
-            $address = $form->get('address')->getData();
             $user->setAddress($address);
 
             $entityManager->persist($user);
@@ -34,7 +33,6 @@ class UserChangeController extends AbstractController
         return $this->render('user_change/index.html.twig', [
             'titlePage' => 'Edition du compte',
             'form' => $form->createView(),
-            'address' => $address,
         ]);
     }    
 }
