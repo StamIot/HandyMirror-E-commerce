@@ -1,14 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
+<div class="title__container">
+    <h1>{{ titleH1 | upper }}</h1>
+    <p class="title__message">Découvrez votre produit</p>
+</div>
 
-<img src="{{ asset ('images/thumbnails') }}/{{product.thumbnail}}" alt="image product">
-{{ product.title}}
-{{ product.description}}
-
-{{ (product.price / 100) |number_format(2, ',', '.') }} €
-
-<a href="" class="btn btn-primary">Ajouter au panier</a>
+<div class="contentWrapper">
+<div class="imageWrapper">
+    <img src="{{ asset ('images/thumbnails') }}/{{product.thumbnail}}" alt="image product" >
+    </div>
+    <div class="productDescription">
+    <div class="title">
+    {{ product.title}}
+    </div>
+    <div class="lessspace"> </div>
+    <div class="subtitle">
+    {{ product.subtitle}}
+    </div>
+    <div class="space"> </div>
+    <div class="price">
+    {{ (product.price / 100) |number_format(2, ',', '.') }} €
+    </div>
+    <div class="space"> </div>
+    Quatité restante : {{ product.quantity }}
+    <div class="space"> </div>
+    Note :
+    <div class="note"> 
+    ⭐⭐⭐⭐⭐
+    </div>
+</div>
+</div>
+<div class="space">
+<b>Description du produit</b>
+<div class="space">
+<div class="description">
+{{ product.description|striptags }}
+</div>
+<div class="space">
+<a href="" class="btn btn-primary margin">Ajouter au panier</a>
 {% endblock main %}
 
 
