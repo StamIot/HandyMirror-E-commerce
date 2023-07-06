@@ -2,31 +2,54 @@
 
 namespace App\Classes;
 
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 class ShoppingCart
 {
-    private $session;
+    private $requestStack;
 
-    public function __construct(SessionInterface $session)
+    public function __construct(RequestStack $requestStack)
     {
-        $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
-    // Ajouter un produit dans mon panier
-    public function add($id) 
+    public function add($id)
     {
-        $this->session->set('cart', [
-            [
+        $session = $this->requestStack->getSession();
+        $cart = $session->get('cart', []);
+
+        // Vérifier si l'élément existe déjà dans le panier
+        $existingItem = null;
+        foreach ($cart as &$item) {
+            if ($item['id'] === $id) {
+                $existingItem = $item;
+                break;
+            }
+        }
+    
+        if ($existingItem !== null) {
+            // Si l'élément existe déjà, augmenter la quantité
+            $existingItem['quantity'] += 1;
+        } else {
+            // Sinon, ajouter un nouvel élément au panier
+            $cart[] = [
                 'id' => $id,
                 'quantity' => 1
-            ]
-        ]);
+            ];
+        }
+    
+        $session->set('cart', $cart);
     }
 
-    // débuger le panier
-    public function get($name)
+    public function get(string $name)
     {
-        return $this->session->get($name);
+        $session = $this->requestStack->getSession();
+        return $session->get($name);
+    }
+
+    public function clear()
+    {
+        $session = $this->requestStack->getSession();
+        return $session->clear();
     }
 }
