@@ -5,25 +5,21 @@
 {% block main %}
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>
-        <p class="lead">N° du compte client ici non ?</p>
+        <p class="title__message"><mark>N° du compte client: <strong>{{ numberAccount }}</strong></mark></p>
     </div>
-    <section>
-    <div class="space"/>
-        <div class="client_container">
-            <div class="user-profile">
+    <section class="client__container">
+        <div class="user-profile">
             <img class="profile-image" src="{{ profileImageUrl }}" alt="Profile Image">
-                <div class="user-info">
-                <p class="info">{{ firstName }}</p>
-                <p class="info">{{ lastName }}</p>
+            <div class="user-info">
+                <p class="info">{{ firstName }} {{ lastName }}</p>
                 <p class="info">{{ email }}</p>
                 <p class="info">{{ address }}</p>
                 <p class="info">{{ city }}</p>
-                </div>
+                <a href="{{ path('app_user_change') }}" class="btnmodif btn-primary m-5">Modifier</a>
             </div>
-            <a href="{{ path('app_user_change') }}" class="btnmodif btn-primary">Modifier</a>
-            <div class="space"/>
         </div>
     </section>
+
     <section class="order__command">
         <p class="orderbutton"> Mes commandes </p>
         <hr>

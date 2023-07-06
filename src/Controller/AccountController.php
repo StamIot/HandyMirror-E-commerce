@@ -14,6 +14,7 @@ class AccountController extends AbstractController
         $user = $this->getUser();
         $command = "Aucune commande pour le moment";
 
+        $numberAccount = $user->getAccountNumber();
         $firstName = $user->getFirstname();
         $lastName = $user->getLastname();
         $email = $user->getEmail();
@@ -41,6 +42,7 @@ class AccountController extends AbstractController
 
         return $this->render('account/index.html.twig', [
             'titleH1' => 'Mon Compte client',
+            'numberAccount' => $numberAccount,
             'profileImageUrl' => $randomProfileImage,
             'firstName' => $firstName,
             'lastName' => $lastName,
