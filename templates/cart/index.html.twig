@@ -61,7 +61,11 @@
 
                 </tbody>
             </table>
-            <a href="" class="btn btn-primary py-10 px-20">Passez au paiement</a>
+            <div>
+                <a href="" class="btn btn-primary py-10 px-20">Passez au paiement</a>
+                <a href="{{ path ('app_remove_to_cart') }}" class="btn btn-danger py-10 px-20">Vider le panier</a>
+            </div>
+
         {% endif %}
     </section>
 {% endblock %}
