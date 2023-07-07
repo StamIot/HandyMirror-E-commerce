@@ -39,7 +39,9 @@
     {{ product.description|striptags }}
     </div>
     <div class="space">
-    <a href="{{ path('app_add_to_cart',{'id': product.id}) }}" class="btn btn-primary margin">Ajouter au panier</a>
+    <a href="{{ path('app_add_to_cart',{'id': product.id}) }}" class="btn btn-primary margin">
+    <i class="fa-solid fa-cart-plus"></i>
+    </a>
 {% endblock main %}
 
 

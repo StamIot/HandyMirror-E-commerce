@@ -1,9 +1,9 @@
 <header>
     <nav>
-        <a href="{{ path('app_home') }}" class="ml-25">
+        <a href="{{ path('app_home') }}" >
             <img src="{{ asset('/images/logo.jpg') }}" alt="Notre logo">
         </a>
-        <ul class="mr-25">
+        <ul>
 
             {% if not is_granted ('ROLE_USER') and not is_granted ('ROLE_ADMIN')  %}
                 <li title="Nos produits">
