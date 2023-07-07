@@ -6,7 +6,11 @@
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>
     </div>
-    <section>
-        Le code du panier ici
+    <section class="p-50">
+        <ul>
+            {% for cart in carts %}
+                <li>{{ cart.id }} : {{ cart.quantity }}</li>
+            {% endfor %}
+        </ul>
     </section>
 {% endblock %}
