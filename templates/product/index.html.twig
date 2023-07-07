@@ -5,43 +5,48 @@
         <h1>{{ titleH1 | upper }}</h1>
         <p class="title__message">Découvrez votre produit</p>
     </div>
-    <section class="contentWrapper">
-        <div class="imageWrapper">
-            <img src="{{ asset ('images/thumbnails') }}/{{product.thumbnail}}" alt="image product" >
+    <section class="product__container">
+        <figure>
+            <img 
+                src="{{ asset ('images/thumbnails') }}/{{product.thumbnail}}" 
+                alt="image product" 
+            />
+        </figure>
+        <div class="product__info">
+            <h2>{{ product.title}}</h2>
+            <p>{{ product.subtitle}}</p>
+            <div class="product__price">
+                {{ (product.price / 100) |number_format(2, ',', '.') }} €
             </div>
-            <div class="productDescription">
-            <div class="title">
-            {{ product.title}}
-            </div>
-            <div class="lessspace"> </div>
-            <div class="subtitle">
-            {{ product.subtitle}}
-            </div>
-            <div class="space"> </div>
-            <div class="price">
-            {{ (product.price / 100) |number_format(2, ',', '.') }} €
-            </div>
-            <div class="space"> </div>
-            Quatité restante : {{ product.quantity }}
-            <div class="space"> </div>
-            Note :
-            <div class="note"> 
-            ⭐⭐⭐⭐⭐
+            <div class="product__other">
+                <span>
+                    <strong>Quantité disponible :</strong>
+                    {{ product.quantity }}
+                </span>
+                <span>
+                    <strong>Note :</strong>
+                    {%- set note = 3 -%}
+                    {% if note == 1 %}⭐<i class="fa-regular fa-star" style="color: #b5b800;"></i><i class="fa-regular fa-star" style="color: #b5b800;"></i><i class="fa-regular fa-star" style="color: #b5b800;"></i><i class="fa-regular fa-star" style="color: #b5b800;"></i>{% endif %}
+                    {% if note == 2 %}⭐⭐<i class="fa-regular fa-star" style="color: #b5b800;"></i><i class="fa-regular fa-star" style="color: #b5b800;"></i><i class="fa-regular fa-star" style="color: #b5b800;"></i>{% endif %}
+                    {% if note == 3 %}⭐⭐⭐<i class="fa-regular fa-star" style="color: #b5b800;"></i><i class="fa-regular fa-star" style="color: #b5b800;"></i>{% endif %}
+                    {% if note == 4 %}⭐⭐⭐⭐<i class="fa-regular fa-star" style="color: #b5b800;"></i>{% endif %}
+                    {% if note == 5 %}⭐⭐⭐⭐⭐{% endif %}
+                </span>
             </div>
         </div>
+        <div class="product__description">
+            <h3>Description du produit</h3>
+            <p>{{ product.description|striptags }}</p>
+        </div>
+        
+        <div class="imageWrapper">
+        <a href="{{ path('app_add_to_cart',{'id': product.id}) }}" class="btn btn-primary">
+        Ajouter au panier <i class="fa-solid fa-cart-plus"></i>
+    </a>
     </section>
 
-    <div class="space">
-    <b>Description du produit</b>
-    <div class="space">
 
-    <div class="description">
-    {{ product.description|striptags }}
-    </div>
-    <div class="space">
-    <a href="{{ path('app_add_to_cart',{'id': product.id}) }}" class="btn btn-primary margin">
-    <i class="fa-solid fa-cart-plus"></i>
-    </a>
+
 {% endblock main %}
 
 
