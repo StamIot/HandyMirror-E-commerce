@@ -15,13 +15,13 @@
                 Votre panier est actuellement vide.
             </div>
         {% else %}
-            <table class="mb-50">
+            <table class="mb-5">
                 <thead>
                     <tr>
                         <th>Image</th>
                         <th>Nom</th>
-                        <th>Quantité</th>
                         <th>Prix/u</th>
+                        <th>Quantité</th>
                         <th>Prix Total</th>
                     </tr>
                 </thead>
@@ -39,28 +39,33 @@
                     <tr>
                         <td colspan="3"></td>
                         <td>Prix Total TTC :</td>
-                        <td>55.00 €</td> 
+                        <td>50 €</td> 
                     </tr>
                 </tfoot>
                 <tbody>
                     {% for cart in carts %}
-                        <tr>
-                            <td><img src="" alt="product img"/></td>
-                            <td>Le nom d'un produit... ID : {{ cart.id }}</td>
-                            <td>
-                                <select name="quantity" id="quantity">
-                                    <option value="one" checked>1</option>
-                                    <option value="two">2</option>
-                                    <option value="three">3</option>
-                                </select>
-                            </td>
-                            <td>50.00 €</td>
-                            <td>50.00 €</td>
-                        </tr>
+                        {% for product in products %}
+                            {% if cart.id == product.id %}
+                                <tr>
+                                    <td><img src="{{ asset ('/images/thumbnails/') }}{{ product.thumbnail }}" alt="product img"/></td>
+                                    <td>{{ product.title }}</td>
+                                    <td>{{ (product.price / 100) }} €</td>
+                                    <td>
+                                        <select name="quantity" id="quantity" value="{{ cart.quantity }}">
+                                            <option value="one">1</option>
+                                            <option value="two">2</option>
+                                            <option value="three">3</option>
+                                        </select>
+                                    </td>
+                                    <td>{{ (product.price / 100) * cart.quantity }} €</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
                     {% endfor %}
-
                 </tbody>
             </table>
+            <caption class="mb-45">Vous disposez de {{ counterSession }} produit{% if counterSession > 1 %}s{% endif %}</caption>
+
             <div>
                 <a href="" class="btn btn-primary py-10 px-20">Passez au paiement</a>
                 <a href="{{ path ('app_remove_to_cart') }}" class="btn btn-danger py-10 px-20">Vider le panier</a>

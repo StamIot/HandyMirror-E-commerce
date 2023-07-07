@@ -17,7 +17,7 @@ class ShoppingCart
     {
         $session = $this->requestStack->getSession();
         $cart = $session->get('cart', []);
-
+        
         // Vérifier si l'élément existe déjà dans le panier
         $existingItem = null;
         foreach ($cart as &$item) {
@@ -26,7 +26,7 @@ class ShoppingCart
                 break;
             }
         }
-    
+
         if ($existingItem !== null) {
             // Si l'élément existe déjà, augmenter la quantité
             $existingItem['quantity'] += 1;
@@ -34,10 +34,10 @@ class ShoppingCart
             // Sinon, ajouter un nouvel élément au panier
             $cart[] = [
                 'id' => $id,
-                'quantity' => 1
+                'quantity' => 3
             ];
         }
-    
+
         $session->set('cart', $cart);
     }
 
