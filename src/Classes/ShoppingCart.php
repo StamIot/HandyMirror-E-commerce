@@ -6,18 +6,18 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class ShoppingCart
 {
-    private $requestStack;
+    private $_requestStack;
 
     public function __construct(RequestStack $requestStack)
     {
-        $this->requestStack = $requestStack;
+        $this->_requestStack = $requestStack;
     }
 
     public function add($id)
     {
-        $session = $this->requestStack->getSession();
+        $session = $this->_requestStack->getSession();
         $cart = $session->get('cart', []);
-        
+
         // Vérifier si l'élément existe déjà dans le panier
         $existingItem = null;
         foreach ($cart as &$item) {
@@ -41,15 +41,21 @@ class ShoppingCart
         $session->set('cart', $cart);
     }
 
-    public function get(string $name)
+    public function get(string $sessionName)
     {
-        $session = $this->requestStack->getSession();
-        return $session->get($name);
+        $session = $this->_requestStack->getSession();
+        return $session->get($sessionName);
+    }
+
+    public function delete($id)
+    {
+        $session = $this->_requestStack->getSession();
+        return $session->remove($id);
     }
 
     public function clear()
     {
-        $session = $this->requestStack->getSession();
+        $session = $this->_requestStack->getSession();
         return $session->clear();
     }
 }
