@@ -8,11 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AboutController extends AbstractController // controller de la page A propos
 {
-    #[Route('/about', name: 'app_about')]
+    #[Route('/a-propos', name: 'app_about')]
     public function index(): Response
     {
         return $this->render('about/index.html.twig', [
-            'titleH1' => 'A propos de l\'équipe',
+            'titleH1' => "A propos de l'équipe",
         ]);
     }
 }
