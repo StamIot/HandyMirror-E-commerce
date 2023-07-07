@@ -63,17 +63,25 @@ main {
             }
         }
         &__message {
-            text-align: center;
-            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
             font-size: 2.8vmin;
             letter-spacing: 4px;
             color: $gray-color;
             padding: 0 5%;
+            span {
+                &:nth-child(1) {
+                    margin-top: 20px;
+                }
+            }
             mark {
                 padding: 8px 16px;
-                opacity: 0.6;
+                opacity: 0.8;
                 background-color: lightgoldenrodyellow;
-                color: $primary-color;
+                color: $black-color;
             }
         }
     }

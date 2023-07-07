@@ -5,20 +5,46 @@
 {% block main %}
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>
-        <p class="title__message"><mark>N° du compte client: <strong>{{ numberAccount }}</strong></mark></p>
+        <p class="title__message">
+            <span>N° du compte client:</span>
+            <span>
+                <strong>
+                    <mark>
+                        {{ app.user.accountNumber }}
+                    </mark>
+                </strong>
+            </span>
+        </p>
     </div>
     <section class="client__container">
         <div class="user-profile">
             <img class="profile-image" src="{{ profileImageUrl }}" alt="Profile Image">
             <div class="user-info">
-                <p class="info">{{ firstName }} {{ lastName }}</p>
-                <p class="info">{{ email }}</p>
-                <p class="info">{{ address }}</p>
-                <p class="info">{{ city }}</p>
-                <a href="{{ path('app_user_change') }}" class="btnmodif btn-primary m-5">Modifier</a>
+                <p class="info">
+                    <span>Prénom</span>
+                    <span>{{ app.user.firstname }}</span>
+                </p>
+                <p class="info">
+                    <span>Nom</span>
+                    <span>{{ app.user.lastname }}</span>
+                </p>
+                <p class="info">
+                    <span>Email</span>
+                    <span>{{ app.user.email }}</span>
+                </p>
+                {% if app.user.address %}
+                    <p class="info">
+                        <span>Adresse:</span>
+                        <span>{{ app.user.address }}</span>
+                    </p>
+                {% endif %}
+                <a href="{{ path('app_user_change') }}">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
             </div>
         </div>
     </section>
+    
 
     <section class="order__command">
         <p class="orderbutton"> Mes commandes </p>
