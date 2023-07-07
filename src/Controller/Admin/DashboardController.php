@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\ProductController;
 use App\Entity\Address;
 use App\Entity\Category;
 use App\Entity\Command;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -39,25 +41,23 @@ class DashboardController extends AbstractDashboardController
 
     public function configureDashboard(): Dashboard
     {
-        return Dashboard::new()
-            ->setTitle('HandyMirror E Commerce Client');
-        // ->setLocales (['fr', 'en']);
+        return Dashboard::new()->setTitle('HandyMirror E Commerce Client');
     }
 
     public function configureMenuItems(): iterable
     {
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::linkToUrl('Affichage des produits', 'fa-solid fa-arrow-right', '/products/list'),
+            MenuItem::linkToUrl('Retour sur la boutique', 'fas fa-shopping-cart', '/products/list'),
 
-            MenuItem::section('Clients'),
-            MenuItem::linkToCrud('Client', 'fas fa-user', User::class),
-            MenuItem::linkToCrud('Commande', 'fa-solid fa-briefcase', Command::class),
-            MenuItem::linkToCrud("Adresse", 'fa-solid fa-address-card', Address::class),
+            MenuItem::section('Section - Clients'),
+            MenuItem::linkToCrud('Client inscrit', 'fa-solid fa-arrow-right', User::class),
+            MenuItem::linkToCrud("Adresse", 'fa-solid fa-arrow-right', Address::class),
+            MenuItem::linkToCrud('Commande passé', 'fa-solid fa-arrow-right', Command::class),
 
-            MenuItem::section('Produits'),
-            MenuItem::linkToCrud('Catégorie', "fa-solid fa-list", Category::class),
-            MenuItem::linkToCrud('Produit', 'fas fa-shopping-cart', Product::class)
+            MenuItem::section('Section - Produits'),
+            MenuItem::linkToCrud('Catégories', 'fa-solid fa-arrow-right', Category::class),
+            MenuItem::linkToCrud('Produits', 'fa-solid fa-arrow-right', Product::class)
         ];
     }
 }
