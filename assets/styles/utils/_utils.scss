@@ -41,22 +41,22 @@
     width: 100%;
     &-info {
         background-color: lightblue;
-        border-left: 4px solid steelblue;
+        border-left: 8px solid steelblue;
         color: steelblue;
     }
     &-success {
         background-color: lightgreen;
-        border-left: 4px solid green;
+        border-left: 8px solid green;
         color: green;
     }
     &-warning {
         background-color: lightgoldenrodyellow;
-        border-left: 4px solid goldenrod;
+        border-left: 8px solid goldenrod;
         color: goldenrod;
     }
     &-danger {
         background-color: lightcoral;
-        border-left: 4px solid crimson;
+        border-left: 8px solid crimson;
         color: crimson;
     }
 }

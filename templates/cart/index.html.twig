@@ -5,12 +5,63 @@
 {% block main %}
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>
+        {% if carts > 1 %}
+            <p class="title__message">Vous avez un ou plusieurs produits en attente</p>
+        {% endif %}
     </div>
     <section class="p-50">
-        <ul>
-            {% for cart in carts %}
-                <li>{{ cart.id }} : {{ cart.quantity }}</li>
-            {% endfor %}
-        </ul>
+        {% if carts == 0 %}
+            <div class="alert alert-info">
+                Votre panier est actuellement vide.
+            </div>
+        {% else %}
+            <table class="mb-50">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Nom</th>
+                        <th>Quantité</th>
+                        <th>Prix/u</th>
+                        <th>Prix Total</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td>Prix Total HT :</td>
+                        <td>50.00 €</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td>TVA :</td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td>Prix Total TTC :</td>
+                        <td>55.00 €</td> 
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for cart in carts %}
+                        <tr>
+                            <td><img src="" alt="product img"/></td>
+                            <td>Le nom d'un produit... ID : {{ cart.id }}</td>
+                            <td>
+                                <select name="quantity" id="quantity">
+                                    <option value="one" checked>1</option>
+                                    <option value="two">2</option>
+                                    <option value="three">3</option>
+                                </select>
+                            </td>
+                            <td>50.00 €</td>
+                            <td>50.00 €</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            <a href="" class="btn btn-primary py-10 px-20">Passez au paiement</a>
+        {% endif %}
     </section>
 {% endblock %}

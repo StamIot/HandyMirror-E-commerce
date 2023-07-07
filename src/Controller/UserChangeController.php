@@ -16,12 +16,10 @@ class UserChangeController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser(); 
-        $address = $user->getAddress();
         $form = $this->createForm(UserChangeType::class, $user);
         $form->handleRequest($request);
     
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setAddress($address);
 
             $entityManager->persist($user);
             $entityManager->flush();
