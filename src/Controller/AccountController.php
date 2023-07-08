@@ -12,44 +12,29 @@ class AccountController extends AbstractController
     public function index(): Response
     {
         $user = $this->getUser();
+        // dd($user);
         $command = "Aucune commande pour le moment";
 
-        $numberAccount = $user->getAccountNumber();
-        $firstName = $user->getFirstname();
-        $lastName = $user->getLastname();
-        $email = $user->getEmail();
-        $address = "122 chemin du Paradis 69961";
-        $city  = "";
-
-        // Définissez un tableau d'URLs d'images de profil
         $profileImages = [
-            'images/icon1.png',
-            'images/icon2.png',
-            'images/icon3.png',
-            'images/icon4.png',
-            'images/icon5.png',
-            'images/icon6.png',
-            'images/icon7.png',
+            'images/icons/user/icon1.png',
+            'images/icons/user/icon2.png',
+            'images/icons/user/icon3.png',
+            'images/icons/user/icon4.png',
+            'images/icons/user/icon5.png',
+            'images/icons/user/icon6.png',
+            'images/icons/user/icon7.png',
         ];
 
-        // Choisissez aléatoirement une URL d'image de profil parmi le tableau
         $randomProfileImage = $profileImages[array_rand($profileImages)];
 
-        if ($this->getUser() && in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+        if ($user && in_array('ROLE_ADMIN', $user->getRoles())) {
             return $this->redirectToRoute('app_admin');
         }
 
-
         return $this->render('account/index.html.twig', [
             'titleH1' => 'Mon Compte client',
-            'numberAccount' => $numberAccount,
             'profileImageUrl' => $randomProfileImage,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'email' => $email,
             'command' => $command,
-            'address' => $address,
-            'city' => $city,
         ]);
     }
 }

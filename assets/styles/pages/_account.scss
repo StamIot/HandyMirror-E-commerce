@@ -4,11 +4,12 @@
         padding: 10% 15%;
     }
     @include lg {
-        padding: 10% 20%;
+        padding: 5% 10%;
     }
 }
 
 .user-profile {
+    position: relative;
     background-color: $creame-color;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
     padding: 5% 10%;
@@ -18,13 +19,11 @@
         'icon'
         'info';
     @include sm {
-        grid-template-columns: 0.5fr 1fr;
-        grid-template-areas:
-            'icon info'
-            'icon info';
-            gap: 25px;
+        grid-template-columns: 0.3fr 1fr;
+        grid-template-areas: 'icon info';
+        gap: 25px;
     }
-    
+
     .profile-image {
         width: 30%; // Largeur souhaitée pour l'icône
         height: fit-content;
@@ -33,7 +32,7 @@
         filter: drop-shadow(0 0 2.5px $primary-color);
         opacity: 0.8;
         @include sm {
-            width: 50%;
+            width: 100%;
         }
     }
 
@@ -43,17 +42,45 @@
         align-items: flex-start;
         justify-content: center;
         margin-bottom: 5%;
-        padding: 5%;
+        padding: 10% 5%;
         background-color: $white-color;
-        box-shadow: inset 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
 
         .info {
-            margin-bottom: 5px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             font-family: Inter;
             font-weight: 700;
             font-size: 16px;
+            span {
+                &:nth-child(2) {
+                    font-style: italic;
+                    font-weight: 400;
+                }
+            }
             @include md {
                 font-size: 20px;
+            }
+        }
+
+        a {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px;
+            background-color: $primary-color;
+            color: $white-color;
+            font-size: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.4s ease-in-out,
+                transform 0.4s ease-in-out, color 0.4s ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+                color: $primary-color;
+                background-color: $white-color;
+                box-shadow: $box-shadow;
             }
         }
     }

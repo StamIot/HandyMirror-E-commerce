@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Entity\Product;
 use App\Classes\ShoppingCart;
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,7 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Validator\Constraints\Length;
 
 class CartController extends AbstractController
 {
@@ -39,14 +37,21 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart/add/{id}', name: 'app_add_to_cart')]
-    public function add(ShoppingCart $cart, $id): Response
+    public function addProductToCartById(ShoppingCart $cart, $id): Response
     {
         $cart->add($id);
         return $this->redirectToRoute('app_products_list');
     }
 
+    #[Route('/cart/remove/{id}', name: 'app_remove_to_cart')]
+    public function deleteProductToCartById(ShoppingCart $cart, $id): Response
+    {
+        $cart->delete($id);
+        return $this->redirectToRoute('app_cart');
+    }
+
     #[Route('/cart/remove', name: 'app_remove_to_cart')]
-    public function remove(ShoppingCart $cart): Response
+    public function clearAllProductsOfCart(ShoppingCart $cart): Response
     {
         $cart->clear();
         return $this->redirectToRoute('app_cart');

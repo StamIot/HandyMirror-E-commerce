@@ -5,23 +5,28 @@
 {% block main %}
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>
-        <p class="title__message">Décrouvez vite nos produits</p>
+        <p class="title__message">Décrouvez un apperçu des produits que nous vous proposons à la vente.</p>
     </div>
     <section class="productsList__container">
         {% for product in products %}
-                <div class="card__container">
-                    <span>{{ (product.price / 100) |number_format(2, ',', '.') }} €</span>
-                    <div class="card__body">
-                            <img src="{{ asset ('images/thumbnails/') }}{{ product.thumbnail }}" alt="{{ product.title }}">
-                        </a>
-                    </div>
-                    <div class="card__footer">
-                        <h2>{{ product.title }}</h2>
-                        <a href="/product/{{ product.slug }}">
-                            Voir le produit
-                        </a>
-                    </div>
+            <div class="card__container">
+                
+                <div class="card__header">
+                    <img src="{{ asset ('images/thumbnails/') }}{{ product.thumbnail }}" alt="{{ product.title }}">
                 </div>
+                <div class="card__body">
+                    <h2>{{ product.title }}</h2>
+                    <p>{{ product.subtitle }}</p>
+                    <span>
+                        {{ (product.price / 100) |number_format(2, ',', '.') }} €
+                    </span>
+                </div>
+                <div class="card__footer">
+                    <a href="/product/{{ product.slug }}">
+                        Voir sa description
+                    </a>
+                </div>
+            </div>
         {% endfor %}
     </section>
 {% endblock %}
