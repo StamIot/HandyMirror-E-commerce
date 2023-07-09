@@ -37,8 +37,11 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $quantity = null;
+    #[ORM\Column(options: ['default' => 0])]
+    private ?int $quantity_selected = null;
+
+    #[ORM\Column(options: ['default' => 0])]
+    private ?int $quantity_in_stock = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
@@ -136,14 +139,14 @@ class Product
         return $this;
     }
 
-    public function getQuantity(): ?int
+    public function getQuantitySelected(): ?int
     {
-        return $this->quantity;
+        return $this->quantity_selected;
     }
 
-    public function setQuantity(?int $quantity): static
+    public function setQuantitySelected(?int $quantitySelected): static
     {
-        $this->quantity = $quantity;
+        $this->quantity_selected = $quantitySelected;
 
         return $this;
     }
@@ -228,6 +231,18 @@ class Product
                 $review->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getQuantityInStock(): ?int
+    {
+        return $this->quantity_in_stock;
+    }
+
+    public function setQuantityInStock(int $quantity_in_stock): static
+    {
+        $this->quantity_in_stock = $quantity_in_stock;
 
         return $this;
     }

@@ -21,7 +21,7 @@
             <div class="product__other">
                 <span>
                     <strong>Quantité disponible :</strong>
-                    {{ product.quantity }}
+                    {{ product.getQuantityInStock() }}
                 </span>
                 <span>
                     <strong>Note :</strong>
@@ -39,13 +39,14 @@
             <p>{{ product.description|striptags }}</p>
         </div>
         
-        <div class="imageWrapper">
-        <a href="{{ path('app_add_to_cart',{'id': product.id}) }}" class="btn btn-primary">
-        Ajouter au panier <i class="fa-solid fa-cart-plus"></i>
-    </a>
+        {% if not is_granted ('ROLE_USER') %}
+            <div class="alert alert-warning">Attention, vous devez être authentififé pour procéder à cet achat</div>
+        {% else %}
+            <a href="{{ path('app_add_to_cart',{'id': product.id }) }}" class="btn btn-primary">
+                Acheter <i class="fa-solid fa-cart-plus"></i>
+            </a>
+        {% endif %}
     </section>
-
-
 
 {% endblock main %}
 
