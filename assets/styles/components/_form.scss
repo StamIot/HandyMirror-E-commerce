@@ -50,6 +50,26 @@
     }
 }
 
+.form__existingAccount {
+    background-color: $black-color;
+    margin-top: 50px;
+    padding: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: $creame-color;
+    a {
+        color: indianred;
+        text-decoration: underline;
+        transition: color 0.4s ease-in-out, text-decoration 0.4s ease-in-out;
+        &:hover {
+            color: lightskyblue;
+            text-decoration: none;
+        }
+    }
+}
+
 form {
     width: 100%;
     margin: 0 auto;
@@ -106,4 +126,3 @@ input {
     font-family: Inter;
     letter-spacing: 3.5px;
 }
-
