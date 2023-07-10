@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page non trouvé{% endblock %}
+
+{% block main %}
+    <div class="title__container">
+        <h1>{{ titleH1 | upper }}</h1>
+        <p class="title__message">Désolé ce produit n'existe pas</p>
+    </div>
+    <section class="error__container">
+        <h2>ERREUR 404</h2>
+        <a href="{{ path('app_products_list') }}">Retour sur la page des produits</a>
+    </section>
+{% endblock %}

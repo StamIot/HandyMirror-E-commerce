@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Flasher\Prime\Notification\NotificationInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,7 +27,15 @@ class ProductController extends AbstractController
         // dd($productBySlug);
 
         if (!$productBySlug) {
-            return $this->redirectToRoute('app_products_list');
+            // toastr("Ce produit n'existe pas", NotificationInterface::ERROR, "Erreur", [
+            //     "timeOut" => "5000"
+            // ]);
+                // ->positionClass('toast-top-right')
+                // ->timeOut("5000")
+                // ->preventDuplicates(true)
+                // ->tapToDismiss(true)
+                // ->addWarning("Product OK");
+            return $this->redirectToRoute('app_error404');
         }
 
         return $this->render('product/index.html.twig', [

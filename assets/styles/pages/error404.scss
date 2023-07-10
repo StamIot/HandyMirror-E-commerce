@@ -1,0 +1,37 @@
+.error__container {
+    padding: 20% 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    gap: 50px;
+    @include sm {
+        padding: 15%;
+    }
+    @include md {
+        padding: 15% 20%;
+    }
+    @include lg {
+        padding: 15% 25%;
+    }
+    @include xl {
+        padding: 10% 30%;
+    }
+    h2 {
+        text-transform: uppercase;
+        font-size: 4vmax;
+        color: indianred;
+    }
+    a {
+        letter-spacing: 1.6px;
+        font-size: 18px;
+        color: $secondary-color;
+        cursor: pointer;
+        text-decoration: underline;
+        transition: color 0.4s ease-in-out, text-decoration 0.4s ease-in-out;
+        &:hover {
+            color: $primary-color;
+            text-decoration: none;
+        }
+    }
+}
