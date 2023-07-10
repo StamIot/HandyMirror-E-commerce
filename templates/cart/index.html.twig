@@ -10,7 +10,7 @@
         {% endif %}
     </div>
     <section class="p-50">
-        {% if carts == 0 %}
+        {% if counterSession == 0 %}
             <div class="alert alert-info">
                 Votre panier est actuellement vide.
             </div>
@@ -18,57 +18,77 @@
             <table class="mb-5">
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th>Nom</th>
-                        <th>Prix/u</th>
-                        <th>Quantité</th>
-                        <th>Prix Total</th>
+                        <th>Article sélectionné</th>
+                        <th>Tarif<br>unitaire</th>
+                        <th>Quantité<br>sélectionné</th>
+                        <th>Coût<br>total</th>
                     </tr>
                 </thead>
+
                 <tfoot>
                     <tr>
-                        <td colspan="3"></td>
-                        <td>Prix Total HT :</td>
-                        <td>50.00 €</td>
+                        <td></td>
+                        <td colspan="2">Sous-total HT :</td>
+                        <td colspan="2">{{ subTotalHT|number_format(2, '.', ' ') }} €</td>
                     </tr>
                     <tr>
-                        <td colspan="3"></td>
-                        <td>TVA :</td>
-                        <td>20%</td>
+                        <td></td>
+                        <td colspan="2">TVA :</td>
+                        <td colspan="2">20 %</td>
                     </tr>
                     <tr>
-                        <td colspan="3"></td>
-                        <td>Prix Total TTC :</td>
-                        <td>50 €</td> 
+                        <td></td>
+                        <td colspan="2">Total TTC :</td>
+                        <td colspan="2">{{ subTotalTTC|number_format(2, '.', ' ') }} €</td> 
                     </tr>
                 </tfoot>
+
                 <tbody>
                     {% for cart in carts %}
                         {% for product in products %}
                             {% if cart.id == product.id %}
                                 <tr>
-                                    <td><img src="{{ asset ('/images/thumbnails/') }}{{ product.thumbnail }}" alt="product img"/></td>
-                                    <td>{{ product.title }}</td>
+                                    <td colspan="2">
+                                        <figure>
+                                            <img src="{{ asset ('/images/thumbnails/') }}{{ product.thumbnail }}" alt="product img"/>
+                                            <figcaption>
+                                                <h3>{{ product.title }}</h3>
+                                                <span><small>{{ product.subtitle }}</small></span>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
                                     <td>{{ (product.price / 100) }} €</td>
                                     <td>
-                                        <select name="quantity" id="quantity" value="{{ cart.quantity }}">
-                                            <option value="one">1</option>
-                                            <option value="two">2</option>
-                                            <option value="three">3</option>
-                                        </select>
+                                        <div>X {{ cart.quantity_selected }}</div>
+                                        <div>
+                                            <a href="/mon-panier/{{ product.id }}/addOne"><i class="fa-solid fa-square-plus"></i></a>
+                                            <a href="/mon-panier/{{ product.id }}/deleteOne"><i class="fa-solid fa-square-minus"></i></a>
+                                        </div>
                                     </td>
-                                    <td>{{ (product.price / 100) * cart.quantity }} €</td>
+                                    <td>{{ (product.price / 100) * cart.quantity_selected }} €
+                                    </td>
                                 </tr>
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
                 </tbody>
             </table>
-            <caption class="mb-45">Vous disposez de {{ counterSession }} produit{% if counterSession > 1 %}s{% endif %}</caption>
+            <caption class="mb-45">Vous avez sélectionné {{ counterSession }} produit{% if counterSession > 1 %}s{% endif %} {% if counterSession > 1 %}différents{% endif %} dans ce panier.</caption>
 
-            <div>
-                <a href="" class="btn btn-primary py-10 px-20">Passez au paiement</a>
-                <a href="{{ path ('app_remove_to_cart') }}" class="btn btn-danger py-10 px-20">Vider le panier</a>
+            <div class="cart__buttons">
+                {% if not is_granted ('ROLE_USER') %}
+                    <div class="alert alert-danger">Attention, vous devez être authentififer pour procéder au paiement</div>
+                {% else %}
+                    <a href="" class="btn btn-primary py-10 px-20">
+                        <span>Paiement</span>
+                        <i class="fa-solid fa-credit-card"></i>
+                    </a>
+                {% endif %}
+
+                <a href="{{ path ('app_remove_to_cart') }}" class="btn btn-danger py-10 px-20">
+                    <span>Vider le panier</span>
+                    <i class="fa-solid fa-broom"></i>
+                </a>
             </div>
 
         {% endif %}

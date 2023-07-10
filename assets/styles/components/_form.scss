@@ -107,26 +107,3 @@ input {
     letter-spacing: 3.5px;
 }
 
-.btn {
-    cursor: pointer;
-    margin: 5% auto;
-    width: 80%;
-    max-width: 300px;
-    height: 54px;
-    box-shadow: $box-shadow;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 2.8vmin;
-    font-family: Inter;
-    font-weight: bold;
-    letter-spacing: 4px;
-    transition: opacity 0.4s ease-in-out;
-    text-transform: uppercase;
-    &-primary {
-        background: $primary-color;
-        color: $white-color;
-    }
-    &:hover {
-        opacity: 0.8;
-    }
-}
