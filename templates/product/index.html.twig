@@ -33,19 +33,29 @@
                     {% if note == 5 %}⭐⭐⭐⭐⭐{% endif %}
                 </span>
             </div>
+            {% if product.getQuantityInStock() == 0 %}
+                <span class="product__infoRupture">
+                    Rupture de stock
+                </span>
+            {% endif %}
         </div>
         <div class="product__description">
             <h3>Description du produit</h3>
             <p>{{ product.description|striptags }}</p>
         </div>
+        <div class="product__action">
+            {% if not is_granted ('ROLE_USER') %}
+                <div class="alert alert-warning">Attention, vous devez être authentififé pour procéder à cet achat</div>
+            {% elseif product.getQuantityInStock() == 0 %}
+                <div class="alert alert-info">Désolé, ce produit à connu un succès fulgurant, nous tentons de ré-approvisioner au plus vite.</div>
+            {% else %}
+                <a href="{{ path('app_add_to_cart',{'id': product.id }) }}" class="btn btn-primary">
+                    Acheter <i class="fa-solid fa-cart-plus"></i>
+                </a>
+            {% endif %}
+        </div>
         
-        {% if not is_granted ('ROLE_USER') %}
-            <div class="alert alert-warning">Attention, vous devez être authentififé pour procéder à cet achat</div>
-        {% else %}
-            <a href="{{ path('app_add_to_cart',{'id': product.id }) }}" class="btn btn-primary">
-                Acheter <i class="fa-solid fa-cart-plus"></i>
-            </a>
-        {% endif %}
+
     </section>
 
 {% endblock main %}

@@ -6,7 +6,7 @@
         'image'
         'info'
         'description'
-        'btn';
+        'action';
     gap: 25px;
 
     @include md {
@@ -15,7 +15,7 @@
             'image info'
             'image info'
             'description description'
-            'btn btn';
+            'action action';
         gap: 50px;
     }
     @include lg {
@@ -52,6 +52,16 @@
         letter-spacing: 1.6px;
         margin-bottom: 25px;
     }
+    .product__infoRupture {
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin-top: 50px;
+        background-color: indianred;
+        padding: 8px 16px;
+        text-transform: uppercase;
+        color: $white-color;
+    }
 }
 
 .product__price {
@@ -87,4 +97,8 @@
             color: $primary-color;
         }
     }
+}
+
+.product__action {
+    grid-area: action;
 }

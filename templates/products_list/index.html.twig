@@ -10,7 +10,11 @@
     <section class="productsList__container">
         {% for product in products %}
             <div class="card__container">
-                
+                {% if product.getQuantityInStock() == 0 %}
+                    <span class="card__infoRupture">
+                        Rupture de stock
+                    </span>
+                {% endif %}
                 <div class="card__header">
                     <img src="{{ asset ('images/thumbnails/') }}{{ product.thumbnail }}" alt="{{ product.title }}">
                 </div>

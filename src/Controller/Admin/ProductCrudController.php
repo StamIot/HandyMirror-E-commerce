@@ -29,7 +29,7 @@ class ProductCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             MoneyField::new('price')
                 ->setCurrency("EUR"),
-            IntegerField::new('quantity'),
+            IntegerField::new('quantity_in_stock'),
             AssociationField::new('category'),
             ImageField::new('thumbnail')
                 ->setBasePath('images//thumbnails/')
