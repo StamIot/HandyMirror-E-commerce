@@ -30,6 +30,7 @@ class ShoppingCart
             $cart[$id]['quantity_selected']++;
             $cart[$id]['quantity_in_stock']--;
         } else {
+            // $product->setQuantityInStock($product->getQuantityInStock() - $cart[$id]['quantity_selected']);
             $cart[$id] = [
                 'id' => $product->getId(),
                 'slug' => $product->getSlug(),
