@@ -2,6 +2,16 @@
 
 {% block title %}A propos de l'équipe{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('about') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('about') }}
+{% endblock %}
+
 {% block main %}
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>
