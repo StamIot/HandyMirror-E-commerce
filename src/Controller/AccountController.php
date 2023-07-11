@@ -31,6 +31,11 @@ class AccountController extends AbstractController
             return $this->redirectToRoute('app_admin');
         }
 
+        // si l'utinisateur n'est pas connecté
+        if (!$user) {
+            return $this->redirectToRoute('app_home');
+        }
+
         return $this->render('account/index.html.twig', [
             'titleH1' => 'Mon Compte client',
             'profileImageUrl' => $randomProfileImage,
