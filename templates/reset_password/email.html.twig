@@ -1,9 +1,21 @@
-<h1>Bonjour !</h1>
+{% extends 'base.html.twig' %}
 
-<p>Pour mettre à jour ton mot de passe clique sur le lien !</p>
+{% block title %}Mot de passe oublié ? Pas de panique !{% endblock %}
 
-<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+{% block main %}
+    <div class="title__container">
+        <h1>{{ titleH1 | upper }}</h1>
+    </div>
+    <section class="checkEmail__container">
+        <p>Pour mettre à jour ton mot de passe clique sur le lien !</p>
 
-<p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+        <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">
+            {{ url('app_reset_password', {token: resetToken.token}) }}
+        </a>
 
-<p>Bye !</p>
+        <p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+        <p>Bye !</p>
+    </section>
+    <p></p>
+{% endblock %}

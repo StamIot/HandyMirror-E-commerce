@@ -29,6 +29,11 @@ Encore
     .addEntry('account', './assets/account.js')
     .addEntry('userChange', './assets/userChange.js')
     .addEntry('login', './assets/login.js')
+    .addEntry('forgotPasswordRequest', './assets/forgotPasswordRequest.js')
+    .addEntry(
+        'forgotPasswordCheckEmail',
+        './assets/forgotPasswordCheckEmail.js',
+    )
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
