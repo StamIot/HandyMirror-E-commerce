@@ -33,6 +33,7 @@ Encore
     .addEntry('about', './assets/about.js')
     .addEntry('legalNotite', './assets/legalNotite.js')
     .addEntry('faq', './assets/faq.js')
+    .addEntry('contactUs', './assets/contactUs.js')
     .addEntry('forgotPasswordRequest', './assets/forgotPasswordRequest.js')
     .addEntry(
         'forgotPasswordCheckEmail',
