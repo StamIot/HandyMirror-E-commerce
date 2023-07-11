@@ -31,7 +31,7 @@ class AccountController extends AbstractController
             return $this->redirectToRoute('app_admin');
         }
 
-        // si l'utinisateur n'est pas connecté
+        
         if (!$user) {
             return $this->redirectToRoute('app_home');
         }
