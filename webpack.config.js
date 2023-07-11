@@ -29,6 +29,7 @@ Encore
     .addEntry('account', './assets/account.js')
     .addEntry('userChange', './assets/userChange.js')
     .addEntry('login', './assets/login.js')
+    .addEntry('signup', './assets/signup.js')
     .addEntry('forgotPasswordRequest', './assets/forgotPasswordRequest.js')
     .addEntry(
         'forgotPasswordCheckEmail',
