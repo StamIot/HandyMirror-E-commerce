@@ -2,6 +2,16 @@
 
 {% block title %}Page non trouvé{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('error404') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('error404') }}
+{% endblock %}
+
 {% block main %}
     <div class="title__container">
         <h1>{{ titleH1 | upper }}</h1>

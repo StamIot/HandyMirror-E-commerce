@@ -34,6 +34,7 @@ Encore
     .addEntry('legalNotite', './assets/legalNotite.js')
     .addEntry('faq', './assets/faq.js')
     .addEntry('contactUs', './assets/contactUs.js')
+    .addEntry('error404', './assets/error404.js')
     .addEntry('forgotPasswordRequest', './assets/forgotPasswordRequest.js')
     .addEntry(
         'forgotPasswordCheckEmail',
