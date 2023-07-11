@@ -2,6 +2,16 @@
 
 {% block title %}Modification du compte client{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('userChange') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('userChange') }}
+{% endblock %}
+
 {% block main %}
     <div class="title__container">
         <h1>{{ titlePage | upper }}</h1>

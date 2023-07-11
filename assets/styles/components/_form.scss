@@ -1,3 +1,5 @@
+@import '../base/base';
+
 .form__container {
     margin: 5%;
     padding: 5%;
@@ -76,7 +78,7 @@ form {
 label {
     color: black-color-dark;
     font-size: 16px;
-    font-family: Inter;
+    font-family: $font-family;
     letter-spacing: 3.5px;
 }
 
@@ -117,6 +119,6 @@ input {
     color: $gray-color;
     text-align: center;
     font-size: 16px;
-    font-family: Inter;
+    font-family: $font-family;
     letter-spacing: 3.5px;
 }

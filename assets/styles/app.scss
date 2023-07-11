@@ -2,11 +2,9 @@
 @import 'utils/variables';
 @import 'utils/mixins';
 @import 'utils/utils';
-@import 'utils/functions';
 
 // base
 @import 'base/reset';
-@import 'base/typography';
 
 //layout
 @import 'layout/layout';
@@ -20,7 +18,6 @@
 @import 'components/navbar';
 
 //pages
-@import 'pages/home';
 @import 'pages/login';
 @import 'pages/signup';
 @import 'pages/productList';
