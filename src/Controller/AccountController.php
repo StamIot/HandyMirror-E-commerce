@@ -29,10 +29,7 @@ class AccountController extends AbstractController
 
         if ($user && in_array('ROLE_ADMIN', $user->getRoles())) {
             return $this->redirectToRoute('app_admin');
-        }
-
-        
-        if (!$user) {
+        } elsif (!$user) {
             return $this->redirectToRoute('app_home');
         }
 
