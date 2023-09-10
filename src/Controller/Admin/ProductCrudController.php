@@ -25,20 +25,22 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('title'),
             TextField::new('subtitle'),
             SlugField::new('slug')
-                ->setTargetFieldName('title'),
+            ->setTargetFieldName('title'),
             TextEditorField::new('description'),
             MoneyField::new('price')
-                ->setCurrency("EUR"),
+            ->setCurrency("EUR"),
             IntegerField::new('quantity_in_stock'),
             AssociationField::new('category'),
             ImageField::new('thumbnail')
-                ->setBasePath('images//thumbnails/')
-                ->setUploadDir('public//images//thumbnails/')
-                ->setUploadedFileNamePattern('[contenthash].[extension]')
-                ->setRequired(true),
+            ->setBasePath('images//thumbnails/')
+            ->setUploadDir('public//images//thumbnails/')
+            ->setUploadedFileNamePattern('[contenthash].[extension]')
+            // Je passe le required à false pour pouvoir modifier un produit sans avoir à reuploader une image
+            ->setRequired(false),
             ImageField::new('image')
-                ->setUploadedFileNamePattern('[day]-[month]-[year]-[slug]-[contenthash].[extension]')
-                ->setUploadDir('//public//upload//products')
+            ->setUploadedFileNamePattern('[day]-[month]-[year]-[slug]-[contenthash].[extension]')
+            ->setUploadDir('//public//upload//products')
+            ->setRequired(false)
         ];
     }
 
