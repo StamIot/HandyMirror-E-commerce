@@ -38,7 +38,7 @@ class Product
     private ?string $image = null;
 
     #[ORM\Column(options: ['default' => 0])]
-    private ?int $quantity_selected = null;
+    private ?int $quantity_selected = 0;
 
     #[ORM\Column(options: ['default' => 0])]
     private ?int $quantity_in_stock = null;
